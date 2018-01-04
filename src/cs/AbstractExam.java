@@ -1,5 +1,5 @@
 package cs;
 
-public class AbstractExam {
-
+public abstract class AbstractExam {
+	abstract void test();
 }
