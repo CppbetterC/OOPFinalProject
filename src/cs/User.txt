@@ -1,0 +1,3 @@
+0;admin01;admin01;admin
+1;teacher01;teacher1;scorer
+2;student01;student01;examinee
