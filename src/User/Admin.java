@@ -3,7 +3,7 @@ package User;
 import java.util.Objects;
 import java.util.Scanner;
 
-import Class.AbstractClass;
+import Class.ClassList;
 import User.User;
 
 public class Admin extends User implements MailServer {
@@ -40,7 +40,7 @@ public class Admin extends User implements MailServer {
 	}
 
 	@Override
-	public void update(AbstractClass absClass, Object message, Object newValue) {
+	public void update(ClassList absClass, Object message, Object newValue) {
 		if (!Objects.isNull(newValue)) {
 			String finalScore = newValue.toString();
 			String tmpMessage = message.toString();

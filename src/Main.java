@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Class.AbstractClass;
+import Class.ClassList;
 import User.Account;
 import User.Admin;
 import User.Examinee;
@@ -18,6 +18,9 @@ public class Main {
 	private static User login;
 	
 	public static void main(String[] args) {
+		ClassList list = new ClassList();
+		list.OpenClassFlie();
+		list.getAllClass();
 		String loginAccount;
 		String loginPassword;
 		System.out.println("Welcome to use the System");
