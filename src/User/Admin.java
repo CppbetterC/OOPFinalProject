@@ -16,21 +16,24 @@ public class Admin extends User implements MailServer {
 	
 	protected void function() {
 		while (true) {
-			System.out.println("1. 學期開課\n" + "2. 登記分數\n" + "3. 成績查詢\n" + "4. 離開系統\n" + "*****************");
-			System.out.println("Enter your service");
+			System.out.println("1. New Class\n" + "2. Delete Class\n" + "3. Search Class\n" + "4. Edit Class\n" + "5. Logout\n" + "*****************");
+			System.out.println("Enter your Service: ");
 			switch (scanner.nextInt()) {
 				case 1: {
-					continue;
+					
+					break;
 				}
 				case 2: {
-					continue;
+					break;
 				}
 				case 3: {
-					continue;
+					break;
 				}
 				case 4: {
-					System.out.println("bye!!!");
 					break;
+				}
+				case 5: {
+					return;
 				}
 			}
 		}

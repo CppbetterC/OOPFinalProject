@@ -35,7 +35,6 @@ public class Main {
 	
 	private static void readAccount() {
 		FileReader fr;
-		int id = 0;
 		try {
 			fr = new FileReader("src/User.txt");
 			BufferedReader br = new BufferedReader(fr);
@@ -44,7 +43,6 @@ public class Main {
 					String Line = br.readLine();
 					String[] split = Line.split(";");
 					userList.add(new User(split[0], split[1], split[2], split[3]));
-					id++;
 				}
 			} catch (IOException e) {
 				e.printStackTrace();

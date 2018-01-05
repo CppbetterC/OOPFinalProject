@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class User {
+	private static Integer count = 0;
 	private Integer id;
 	private String account;
 	private String password;
@@ -21,6 +22,7 @@ public class User {
 		this.account = account;
 		this.password = password;
 		this.permission = permission;
+		count++;
 	}
 
 	public User(User u) {

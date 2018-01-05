@@ -22,8 +22,7 @@ public class Class extends AbstractClass{
 	public void setFinalScore(float finalScore) {
 		this.finalScore = finalScore;
 //		setChanged();
-		notifyObserverGetFinalScore("FinalScore had been changed"
-				, new Float(finalScore));
+		notifyObserverGetFinalScore("FinalScore had been changed", new Float(finalScore));
 	}
 	
 	public void listGradeReport() {
