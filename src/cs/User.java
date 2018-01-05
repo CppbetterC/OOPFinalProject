@@ -13,6 +13,7 @@ public class User {
 	protected Map<Integer, String> password = new HashMap<>();
 	protected Map<Integer, String> permission = new HashMap<>();
 	private Map<String, String> keyOfAccount = new HashMap<>();
+	private Map<String, String> keyOfPermission = new HashMap<>();
 	
 	//protected String[][] password;
 	
@@ -30,6 +31,7 @@ public class User {
 					password.put(id, tmp[2]);
 					permission.put(id, tmp[3]);
 					keyOfAccount.put(tmp[1], tmp[2]);
+					keyOfPermission.put(tmp[1], tmp[3]);
 					id++;
 				}
 			} catch (IOException e) {
@@ -44,8 +46,8 @@ public class User {
 			
 			if (key.equals(account) && 
 					keyOfAccount.get(key).equals(password)) {
-//				need to return the permission of the account(admin01, scorer, examinee)
-//				return 
+//				return the permission of the account(admin01, scorer, examinee)
+				return this.keyOfPermission.get(key);
 			}
 		}
 		return "error";
