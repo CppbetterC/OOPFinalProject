@@ -1,4 +1,4 @@
-package cs;
+package Class;
 
 public abstract class AbstractExamApp {
 	AbstractExam t;

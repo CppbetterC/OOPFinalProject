@@ -1,4 +1,4 @@
-package cs;
+package Class;
 
 public class Quiz extends AbstractExam {
 	
