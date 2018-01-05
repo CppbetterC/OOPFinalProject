@@ -3,11 +3,12 @@ package Class;
 public class Class extends AbstractClass{
 	private String courseName;
 	private float finalScore;
+	private showFormat showFormat;
 	
-	public Class(String courseName, float finalScore) {
-		super();
+	public Class(String courseName, float finalScore, showFormat s) {
 		this.courseName = courseName;
 		this.finalScore = finalScore;
+		this.showFormat = s;
 	}
 	
 	public String getCourseName() {
@@ -23,6 +24,11 @@ public class Class extends AbstractClass{
 //		setChanged();
 		notifyObserverGetFinalScore("FinalScore had been changed"
 				, new Float(finalScore));
+	}
+	
+	public void listGradeReport() {
+//		implement the showFormat
+//		using the design pattern(strategy)
 	}
 	
 }
