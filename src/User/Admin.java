@@ -1,7 +1,9 @@
 package User;
 
+import java.util.Objects;
 import java.util.Scanner;
 
+import Class.AbstractClass;
 import User.User;
 
 public class Admin extends User implements MailServer {
@@ -9,7 +11,7 @@ public class Admin extends User implements MailServer {
 	public Admin(User user) {
 		super(user);
 		System.out.println("Welcome back, " + getAccount() + "\n");
-		function();
+		function();	
 	}
 	
 	protected void function() {
@@ -31,6 +33,17 @@ public class Admin extends User implements MailServer {
 					break;
 				}
 			}
+		}
+	}
+
+	@Override
+	public void update(AbstractClass absClass, Object message, Object newValue) {
+		if (!Objects.isNull(newValue)) {
+			String finalScore = newValue.toString();
+			String tmpMessage = message.toString();
+			System.out.println("You get a mail\n" + tmpMessage);
+			System.out.println("期末成績已經被改變 ->分數:" + finalScore);
+//			call write method to write file to txt
 		}
 	}
 }

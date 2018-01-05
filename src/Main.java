@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Class.AbstractClass;
 import User.Account;
 import User.Admin;
 import User.Examinee;
@@ -28,6 +29,7 @@ public class Main {
 			loginPassword = scanner.nextLine();		
 			readAccount();		// prepare the account list for login
 			System.out.println(Verify(loginAccount, loginPassword));	// get the permission of this account
+			System.out.println("hello");
 		}
 	}
 	
