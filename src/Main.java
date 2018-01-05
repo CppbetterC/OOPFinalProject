@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Class.ClassList;
-import User.Account;
 import User.Admin;
 import User.Examinee;
 import User.Scorer;
@@ -61,19 +60,18 @@ public class Main {
 				if(password.equals(user.getPassword())) {
 					if(user.getPermission().equals("admin")) {
 						login = new Admin(user);
-						return "You have logged out\n";
 					}
 					else if(user.getPermission().equals("scorer")) {
 						login = new Scorer(user);
-						return "You have logged out\n";
 					}
 					else if (user.equals("examinee")) {
 						login = new Examinee(user);
-						return "You have logged out\n";
 					}
 					else {
 						return "Login Failed\n";
 					}
+					user = login;
+					return "You have logged out\n";
 				}
 				else
 					return "Password Error\n";

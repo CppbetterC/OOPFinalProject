@@ -13,7 +13,27 @@ public class Examinee extends User implements MailServer {
 	}
 	
 	protected void function() {
-		
+		while (true) {
+			System.out.println("1. Change Password\n" + "2. Search Class\n" + "3. Logout\n" + "*****************");
+			System.out.println("Enter your Service: ");
+			switch (scanner.nextInt()) {
+				case 1: {
+					if(this.setPassword(scanner.nextLine()))
+						System.out.println("Password has been Changed\n");
+					else
+						System.out.println("Password Change failed\n");
+					break;
+				}
+				case 2: {
+					break;
+				}
+				case 3: {
+					return;
+				}
+				default:
+					break;
+			}
+		}
 	}
 
 	@Override

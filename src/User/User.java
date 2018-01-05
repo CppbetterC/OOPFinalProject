@@ -36,24 +36,17 @@ public class User {
 		return id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
 	public String getAccount() {
 		return account;
-	}
-
-	public void setAccount(String account) {
-		this.account = account;
 	}
 
 	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(String password) {
+	public boolean setPassword(String password) {
 		this.password = password;
+		return true;
 	}
 
 	public String getPermission() {
