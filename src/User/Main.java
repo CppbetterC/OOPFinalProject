@@ -101,6 +101,42 @@ public class Main {
 		return "N/A";
 	}
 	
+	public static void printUserList() {
+		for(User user: userList) {
+			System.out.println(user.getId() + " " + user.getName());
+		}
+	}
+	
+	public static boolean addAccount(String name, String account, String password, String permission) {
+		if(!permission.equals("admin") && !permission.equals("scorer") && !permission.equals("examinee"))
+			return false;
+		for(User user: userList) {
+			if(user.getAccount().equals(account))	return false;
+		}
+		userList.add(new User(name, account, password, permission));
+		return true;
+	}
+	
+	public static boolean deleteAccount(Integer id) {
+		for(User user: userList) {
+			if(user.getId().equals(id)) {
+				userList.remove(user);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static boolean setPassword(Integer id, String password) {
+		for(User user: userList) {
+			if(user.getId().equals(id)) {
+				user.setPassword(password);
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	private static void writeClassToFile() {
 //		pass data to write data to file
 		FileWriter fw;

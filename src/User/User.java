@@ -30,6 +30,16 @@ public class User {
 		this.password = password;
 		this.permission = permission;
 		this.course  = CourseList.getCourse(this.getId());
+		count = this.id + 1;
+	}
+	
+	public User(String name, String account, String password, String permission) {
+		this.id = count;
+		this.name = name;
+		this.account = account;
+		this.password = password;
+		this.permission = permission;
+		this.course  = CourseList.getCourse(this.getId());
 		count++;
 	}
 
@@ -53,6 +63,7 @@ public class User {
 			System.out.println("\n\n*****************\n1. Change Password\n" + "2. Search Class\n" + "3. Logout\n*****************");
 			System.out.println("Choose a Service or Enter a class number directely: ");
 			Integer choice = scanner.nextInt();
+			System.out.flush();
 			switch (choice) {
 				case 1: {
 					scanner.nextLine();

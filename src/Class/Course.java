@@ -13,6 +13,7 @@ import User.Main;
 import User.User;
 
 public class Course {
+	private static Integer count = 1001;
 	private Integer number;
 	private String name;
 	private Integer teacher;
@@ -24,11 +25,12 @@ public class Course {
 //	We will set and get the score of the exam or quiz by this variable;
 	private ArrayList<AbstractExam> numOfTest = new ArrayList<AbstractExam>();
 	
-	public Course(Integer number, String name){
-		this.number = number;
+	public Course(String name){
+		this.number = count;
 		this.name = name;
 //		default showFormat is GradesMaxToMin
 		this.showFormat = new GradesMaxToMin();
+		count++;
 	}
 	public Course(Integer number, String name, Integer teacher, ArrayList<Integer> student){
 		this.number = number;
@@ -37,6 +39,7 @@ public class Course {
 		this.student = student;
 //		default showFormat is GradesMaxToMin
 		this.showFormat = new GradesMaxToMin();
+		count = this.number + 1;
 	}
 	
 	public Integer getNumber() {

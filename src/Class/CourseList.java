@@ -43,12 +43,8 @@ public class CourseList {
 	}
 	
 	
-	public static boolean addCourse(Integer number, String name) {
-		for(Course c: allClass) {
-			if(c.getNumber() == number) return false;
-		}
-		allClass.add(new Course(number, name));
-		return true;
+	public static void addCourse(String name) {
+		allClass.add(new Course(name));
 	}
 	
 	public static boolean deleteCourse(Integer number) {
@@ -127,6 +123,62 @@ public class CourseList {
 		return "Course " + String.valueOf(number) + " No found";
 	}
 	
+	public static void printAllCourse() {
+		for(Course c: allClass) {
+			System.out.println(c);
+		}
+	}
+	
+	public static boolean addGrade(Integer number) {
+		for(Course c: allClass) {
+			if(c.getNumber() == number) {
+				c.addGrade();
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static boolean deleteGrade(Integer number) {
+		for(Course c: allClass) {
+			if(c.getNumber() == number) {
+				c.deleteGrade();
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static boolean setGrade(Integer number) {
+		for(Course c: allClass) {
+			if(c.getNumber() == number) {
+				c.setGrade();
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static boolean getGrade(Integer number) {
+		for(Course c: allClass) {
+			if(c.getNumber() == number) {
+				c.getAllGrade();
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static boolean getGrade(Integer userId, Integer number) {
+		for(Course c: allClass) {
+			if(c.getNumber() == number) {
+				c.getSingleGrade(userId, number);
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public static synchronized void addObserver(MailServer mail) {
 		if (mail == null) {
 			throw new NullPointerException();
@@ -139,7 +191,7 @@ public class CourseList {
 	public static void attachObserver(MailServer newObserver) {
 		observers.add(newObserver);
 	}
-	
+	/*
 //	public static void notifyObserverGetFinalScore(String mailContext, float finalScore) {
 //		String [] str;
 //		synchronized (this) {
@@ -154,7 +206,7 @@ public class CourseList {
 //		for(MailServer obs : observers) {
 //			obs.update(this, mailContext, finalScore);
 //		}
-//	}
+//	}*/
 	public static void OpenClassFlie() {
 		ArrayList<Integer> student = new ArrayList<Integer>();
 		FileReader fr;
@@ -176,16 +228,5 @@ public class CourseList {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public static void getAllClass() {
-		System.out.println(allClass.get(0).getTeacher());
-	}
-	public static void createQuiz() {
-		QuizApp quize = new QuizApp();
-	}
-	public static void createExam() {
-		ExamApp exam = new ExamApp();
-	}
-	
+	}	
 }
