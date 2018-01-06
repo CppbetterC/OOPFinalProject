@@ -1,11 +1,15 @@
 package User;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Class.Course;
 import Class.CourseList;
 
 public class Main {
@@ -58,14 +62,24 @@ public class Main {
 					if(user.getPermission().equals("admin")) {
 						System.out.println("Your permission is admin");
 						login = new Admin(user);
+//						pass data to writeClassToFile, writeGradesFile
+//						writeClassToFile();
+//						writeGradesToFile();
+						
 					}
 					else if(user.getPermission().equals("scorer")) {
 						System.out.println("Your permission is scorer");
 						login = new Scorer(user);
+//						pass data to writeClassToFile, writeGradesFile
+//						writeClassToFile();
+//						writeGradesToFile();
 					}
 					else if (user.equals("examinee")) {
 						System.out.println("Your permission is examinee");
 						login = new Examinee(user);
+//						pass data to writeClassToFile, writeGradesFile
+//						writeClassToFile();
+//						writeGradesToFile();
 					}
 					else {
 						return "Login Failed\n";
@@ -87,5 +101,27 @@ public class Main {
 			}
 		}
 		return "N/A";
+	}
+	
+	private static void writeClassToFile() {
+//		pass data to write data to file
+		FileWriter fw;
+		try {
+			fw = new FileWriter("src/Class.txt");
+			fw.write("data");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private static void writeGradesToFile() {
+//		pass data to write data to file
+		FileWriter fw;
+		try {
+			fw = new FileWriter("src/Class.txt");
+			fw.write("data");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
