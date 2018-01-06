@@ -7,7 +7,7 @@ import Class.Course;
 import Class.CourseList;
 import User.User;
 
-public class Examinee extends User/* implements MailServer*/ {
+public class Examinee extends User implements MailServer {
 	Learn learn;
 	public Examinee(User user){
 		super(user);
@@ -19,12 +19,12 @@ public class Examinee extends User/* implements MailServer*/ {
 		learn = new Learn(this.getId(), choice);
 	}
 
-	public static void update(CourseList absClass, Object message, Object newValue) {
-		if (!Objects.isNull(newValue)) {
-			String finalScore = newValue.toString();
+	@Override
+	public void update(Object message) {
+		if (!Objects.isNull(message)) {
 			String tmpMessage = message.toString();
-			System.out.println("You get a mail\n" + tmpMessage);
-			System.out.println("期末成績已經被改變 ->分數:" + finalScore);
+			System.out.println("You got a mail");
+			System.out.println("[" + tmpMessage + "]");
 //			call write method to write file to txt
 		}
 	}

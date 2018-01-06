@@ -20,12 +20,11 @@ public class Scorer extends User implements MailServer {
 	}
 
 	@Override
-	public void update(CourseList absClass, Object message, Object newValue) {
-		if (!Objects.isNull(newValue)) {
-			String finalScore = newValue.toString();
+	public void update(Object message) {
+		if (!Objects.isNull(message)) {
 			String tmpMessage = message.toString();
-			System.out.println("You get a mail\n" + tmpMessage);
-			System.out.println("期末成績已經被改變 ->分數:" + finalScore);
+			System.out.println("You got a mail");
+			System.out.println("[" + tmpMessage + "]");
 //			call write method to write file to txt
 		}
 	}

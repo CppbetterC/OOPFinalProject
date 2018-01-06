@@ -153,6 +153,8 @@ public class CourseList {
 		for(Course c: allClass) {
 			if(c.getNumber() == number) {
 				c.setGrade();
+				String message = "Scores had been changed.Please check your grades again";
+				notifyObserverGetFinalScore(message);
 				return true;
 			}
 		}
@@ -178,35 +180,18 @@ public class CourseList {
 		}
 		return false;
 	}
-	
-	public static synchronized void addObserver(MailServer mail) {
-		if (mail == null) {
-			throw new NullPointerException();
-		}
-		if (!obs.contains(mail)) {
-			obs.addElement(mail);
-		}
-	}
 
 	public static void attachObserver(MailServer newObserver) {
 		observers.add(newObserver);
 	}
-	/*
-//	public static void notifyObserverGetFinalScore(String mailContext, float finalScore) {
-//		String [] str;
-//		synchronized (this) {
-//			if (!finalScoreChanged) {
-//				return;
-//			}
-//			else {
-//				str = (String[]) obs.toArray();
-//				clearChanged();
-//			}
-//		}
-//		for(MailServer obs : observers) {
-//			obs.update(this, mailContext, finalScore);
-//		}
-//	}*/
+
+//	Notify all observer, sent messages to them;
+	public static void notifyObserverGetFinalScore(String mailContext) {
+		for(MailServer obs : observers) {
+			obs.update(mailContext);
+		}
+	}
+	
 	public static ArrayList<Course> getAllClass() {
 		return allClass;
 	}
