@@ -1,6 +1,5 @@
 package Class;
 
 public abstract class AbstractExam {
-	abstract void test();
-	abstract void addExamSubjects();
+	abstract void setScore();
 }

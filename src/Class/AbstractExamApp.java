@@ -5,11 +5,10 @@ public abstract class AbstractExamApp {
 
 	 public AbstractExamApp() {}
 		 
-
-	 public void doSomethings(){
-		 t = factoryMethod();
-		 t.test();
-	 }
+//	 public void doSomethings(){
+//		 t = getTypeOfTest();
+//		 t.test();
+//	 }
 	 
-	 abstract AbstractExam factoryMethod();
+	 abstract AbstractExam getTypeOfTest();
 }

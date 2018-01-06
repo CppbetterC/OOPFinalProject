@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 import User.Main;
 import User.User;
@@ -17,6 +18,11 @@ public class Course {
 	private Integer teacher;
 	private ArrayList<Integer> student;
 	private showFormat showFormat;
+	Scanner scanner = new Scanner(System.in);
+	
+//	every AbstractExamApp will new Exam or Quiz;
+//	We will set and get the score of the exam or quiz by this variable;
+	private ArrayList<AbstractExam> numOfTest = new ArrayList<AbstractExam>();
 	
 	public Course(Integer number, String name){
 		this.number = number;
@@ -110,8 +116,83 @@ public class Course {
 			}
 		}
 	}
+	
 	@Override
 	public String toString() {
 		return "Class: " + String.valueOf(this.number) + " " + this.name + "\nTeacher: " + Main.getUserName(this.teacher);
 	}
+
+//	increase the test and the type of the text either Exam or Quiz
+	public void addNumOfTest() {
+		AbstractExamApp app;
+		System.out.println("Which type do you want to add");
+		System.out.println("1.Quiz:\n2.Exam:\n");
+		int choice = scanner.nextInt();
+		if (choice == 1) {
+			 app = new QuizApp();
+			this.numOfTest.add(app.getTypeOfTest());
+		}
+		else if (choice == 2) {
+			app  = new ExamApp();
+			this.numOfTest.add(app.getTypeOfTest());
+		}
+		else {
+			System.out.println("Error system instruction");
+		}
+	}
+	
+	public void deleteNumOfTest() {
+		int index = 0;
+		System.out.println("Which index do you want to delete");
+		
+		for(AbstractExam app : numOfTest) {
+			System.out.println(index + ":" + app.getClass().toString());
+			index++;
+		}
+		System.out.println("Choice:");
+		int choice = scanner.nextInt();
+		System.out.println("Do you want to delete this?(Y/N)\nIndex = " 
+		+ this.numOfTest.get(choice));
+		String flag = scanner.nextLine();
+		if (flag.equals("Y")) {
+			this.numOfTest.remove(choice);
+			System.out.println("delete successfully");
+		}
+		else if(flag.equals("N")) {
+			System.out.println("delete false");
+		}
+		else {
+			System.out.println("error instruction");
+		}
+	}
+	
+	public void setGradeOfCourse() {
+		int index = 0;
+		System.out.println("Which index do you want to set grades");
+		
+		for(AbstractExam app : numOfTest) {
+			System.out.println(index + ":" + app.getClass().toString());
+			index++;
+		}
+		System.out.println("Choice:");
+		int choice = scanner.nextInt();
+		System.out.println("Do you want to delete this?(Y/N)\nIndex = " 
+		+ this.numOfTest.get(choice));
+		String flag = scanner.nextLine();
+		if (flag.equals("Y")) {
+			System.out.println("Enter the scores of the every student");
+			System.out.println("update successfully");
+			for(int i = 0;i < this.student.size(); i++) {
+//				set the scores of the student; 
+			}
+		}
+		else if(flag.equals("N")) {
+			System.out.println("update false");
+		}
+		else {
+			System.out.println("error instruction");
+		}
+	}
+	
+	
 }
