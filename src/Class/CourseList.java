@@ -17,6 +17,31 @@ public class CourseList {
 	private static Vector obs = new Vector();
 	private static ArrayList<Course> allClass = new ArrayList<Course>();
 	
+	public CourseList() {
+		ArrayList<Integer> student = new ArrayList<Integer>();
+		FileReader fr;
+		try {
+			fr = new FileReader("src/Class.txt");
+			BufferedReader br = new BufferedReader(fr);
+			try {
+				while(br.ready()) {
+					String Line = br.readLine();
+					String[] split = Line.split(";");
+					for (int i = 3; i < split.length;i++) {
+						student.add(Integer.valueOf(split[i]));
+					}
+					allClass.add(new Course(Integer.valueOf(split[0]), split[1], Integer.valueOf(split[1]), student));
+				}
+				fr.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 	public static boolean addCourse(Integer number, String name) {
 		for(Course c: allClass) {
 			if(c.getNumber() == number) return false;
@@ -153,6 +178,12 @@ public class CourseList {
 	
 	public static void getAllClass() {
 		System.out.println(allClass.get(0).getTeacher());
+	}
+	public static void createQuiz() {
+		QuizApp quize = new QuizApp();
+	}
+	public static void createExam() {
+		ExamApp exam = new ExamApp();
 	}
 	
 }
