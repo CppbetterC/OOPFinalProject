@@ -12,15 +12,15 @@ import User.MailServer;
 import User.User;
 
 public class ClassList {
-	private boolean finalScoreChanged = false;
-	private ArrayList<MailServer> observers = new ArrayList<MailServer>();
-	private Vector obs;
-	private ArrayList<Course> allClass = new ArrayList<Course>();
+	private static boolean finalScoreChanged = false;
+	private static ArrayList<MailServer> observers = new ArrayList<MailServer>();
+	private static Vector obs;
+	private static ArrayList<Course> allClass = new ArrayList<Course>();
 	public ClassList() {
 		obs = new Vector();
 	}
 	
-	public synchronized void addObserver(MailServer mail) {
+	public static synchronized void addObserver(MailServer mail) {
 		if (mail == null) {
 			throw new NullPointerException();
 		}
@@ -29,11 +29,11 @@ public class ClassList {
 		}
 	}
 
-	public void attachObserver(MailServer newObserver) {
+	public static void attachObserver(MailServer newObserver) {
 		observers.add(newObserver);
 	}
 	
-	public void notifyObserverGetFinalScore(String mailContext, float finalScore) {
+//	public static void notifyObserverGetFinalScore(String mailContext, float finalScore) {
 //		String [] str;
 //		synchronized (this) {
 //			if (!finalScoreChanged) {
@@ -44,11 +44,11 @@ public class ClassList {
 //				clearChanged();
 //			}
 //		}
-		for(MailServer obs : observers) {
-			obs.update(this, mailContext, finalScore);
-		}
-	}
-	public void OpenClassFlie() {
+//		for(MailServer obs : observers) {
+//			obs.update(this, mailContext, finalScore);
+//		}
+//	}
+	public static void OpenClassFlie() {
 		ArrayList<String> student = new ArrayList<String>();
 		FileReader fr;
 		try {
@@ -71,7 +71,7 @@ public class ClassList {
 		}
 	}
 	
-	public void getAllClass() {
+	public static void getAllClass() {
 		System.out.println(allClass.get(0).getTeacher());
 	}
 	

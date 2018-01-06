@@ -2,7 +2,7 @@ package Class;
 
 import java.util.ArrayList;
 
-public class Course extends ClassList{
+public class Course {
 	private String courseName;
 	private float finalScore;
 	private showFormat showFormat;
@@ -62,7 +62,7 @@ public class Course extends ClassList{
 	public void setFinalScore(float finalScore) {
 		this.finalScore = finalScore;
 //		setChanged();
-		notifyObserverGetFinalScore("FinalScore had been changed", new Float(finalScore));
+//		notifyObserverGetFinalScore("FinalScore had been changed", new Float(finalScore));
 	}
 	
 	public void listGradeReport() {
