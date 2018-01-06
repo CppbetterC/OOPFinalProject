@@ -10,15 +10,11 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
-import Class.ClassList;
 import Class.Course;
+import Class.CourseList;
 import User.User;
 
 public class Admin extends User implements MailServer {
-	
-	private  ArrayList<String> defaultCourseName = new ArrayList<String>();
-	private  ArrayList<String> defaultTeacherName = new ArrayList<String>();
-	private  ArrayList<Course> defaultCourse = new ArrayList<Course>();
 	
 	public Admin(User user) {
 		super(user);
@@ -38,25 +34,6 @@ public class Admin extends User implements MailServer {
 				case 1: {
 //					New Class, To create the class and set the all attribute;
 					System.out.println("System is setting the couse in this semester");
-					
-					defaultCourseName.add("Math");
-					defaultCourseName.add("Chemistry");
-					defaultCourseName.add("Physical");
-					defaultCourseName.add("Art");
-					defaultCourseName.add("History");
-					defaultCourseName.add("Geography");
-					
-					defaultTeacherName.add("Chen");
-					defaultTeacherName.add("Lin");
-					defaultTeacherName.add("Kuo");
-					defaultTeacherName.add("Wang");
-					defaultTeacherName.add("Ying");
-					defaultTeacherName.add("Cheng");
-					
-					for(int i = 0; i < defaultCourseName.size(); i++) {
-						defaultCourse.add(new Course(defaultCourseName.get(i).toString()));
-					}
-					this.writeCourseToFile(defaultCourse);
 					break;
 				}
 				case 2: {
@@ -101,7 +78,7 @@ public class Admin extends User implements MailServer {
 
 	}
 	@Override
-	public void update(ClassList absClass, Object message, Object newValue) {
+	public void update(CourseList absClass, Object message, Object newValue) {
 		if (!Objects.isNull(newValue)) {
 			String finalScore = newValue.toString();
 			String tmpMessage = message.toString();
