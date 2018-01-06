@@ -1,3 +1,4 @@
+package User;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -5,11 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Class.ClassList;
-import User.Admin;
-import User.Examinee;
-import User.Scorer;
-import User.User;
+import Class.CourseList;
 
 public class Main {
 	private static ArrayList<User> userList = new ArrayList<User>();
@@ -17,7 +14,7 @@ public class Main {
 	private static User login;
 	
 	public static void main(String[] args) {
-		ClassList list = new ClassList();
+		CourseList list = new CourseList();
 		list.OpenClassFlie();
 		list.getAllClass();
 		String loginAccount;
@@ -44,7 +41,7 @@ public class Main {
 				while(br.ready()) {
 					String Line = br.readLine();
 					String[] split = Line.split(";");
-					userList.add(new User(split[0], split[1], split[2], split[3]));
+					userList.add(new User(split[0], split[1], split[2], split[3], split[4]));
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -81,5 +78,14 @@ public class Main {
 			}
 		}
 		return "Account No Found\n";
+	}
+	
+	public static String getUserName(Integer id) {
+		for(User user: userList) {
+			if(user.getId() == id) {
+				return user.getName();
+			}
+		}
+		return "N/A";
 	}
 }

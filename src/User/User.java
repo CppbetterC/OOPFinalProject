@@ -13,14 +13,16 @@ import Class.CourseList;
 public class User {
 	private static Integer count = 0;
 	private Integer id;
+	private String name;
 	private String account;
 	private String password;
 	private String permission;
 
 	protected Scanner scanner = new Scanner(System.in);
 	
-	public User(String id, String account, String password, String permission) {
+	public User(String id, String name, String account, String password, String permission) {
 		this.id = Integer.valueOf(id);
+		this.name = name;
 		this.account = account;
 		this.password = password;
 		this.permission = permission;
@@ -29,6 +31,7 @@ public class User {
 
 	public User(User u) {
 		this.id = u.id;
+		this.name = u.name;
 		this.account = u.account;
 		this.password = u.password;
 		this.permission = u.permission;
@@ -36,6 +39,10 @@ public class User {
 
 	public Integer getId() {
 		return id;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	public String getAccount() {
