@@ -35,13 +35,36 @@ public class CourseList {
 		return false;
 	}
 	
-	public static String getTeacher(Integer number) {
+	public static ArrayList<Course> getCourse(Integer id){
+		ArrayList<Course> chosen = new ArrayList<Course>();
+		for(Course c: allClass) {
+			if(id == c.getTeacher())	chosen.add(c);
+			ArrayList<Integer> students = c.getStudents();
+			for(Integer student: students) {
+				if(student == id) chosen.add(c);
+			}
+		}
+		return chosen;
+	}
+	
+	public static Course getCourse(String search){
+		for(Course c: allClass) {
+			if(search.equals(c.getTeacher().toString()))	return c;
+			ArrayList<Integer> students = c.getStudents();
+			for(Integer student: students) {
+				if(search.equals(student.toString())) return c;;
+			}
+		}
+		return null;
+	}
+	
+	public static Integer getTeacher(Integer number) {
 		for(Course c: allClass) {
 			if(c.getNumber() == number) return c.getTeacher();
 		}
-		return "Course " + String.valueOf(number) + " No found";
+		return -1;
 	}
-	public static boolean setTeacher(Integer number, String teacher) {
+	public static boolean setTeacher(Integer number, Integer teacher) {
 		for(Course c: allClass) {
 			if(c.getNumber() == number) {
 				c.setTeacher(teacher);
@@ -50,20 +73,20 @@ public class CourseList {
 		}
 		return false;
 	}
-	public static ArrayList<String> getStudents(Integer number) {
+	public static ArrayList<Integer> getStudents(Integer number) {
 		for(Course c: allClass) {
 			if(c.getNumber() == number) return c.getStudents();
 		}
 		return null;
 	}
-	public static boolean addStudent(Integer number, String student) {
+	public static boolean addStudent(Integer number, Integer student) {
 		for(Course c: allClass) {
 			if(c.getNumber() == number) return c.addStudent(student);
 		}
 		return false;
 	}
 	
-	public static boolean deleteStudent(Integer number, String student) {
+	public static boolean deleteStudent(Integer number, Integer student) {
 		for(Course c: allClass) {
 			if(c.getNumber() == number) return c.deleteStudent(student);
 		}
@@ -106,7 +129,7 @@ public class CourseList {
 //		}
 //	}
 	public static void OpenClassFlie() {
-		ArrayList<String> student = new ArrayList<String>();
+		ArrayList<Integer> student = new ArrayList<Integer>();
 		FileReader fr;
 		try {
 			fr = new FileReader("src/Class.txt");
@@ -116,9 +139,9 @@ public class CourseList {
 					String Line = br.readLine();
 					String[] split = Line.split(";");
 					for (int i = 3; i < split.length;i++) {
-						student.add(split[i]);
+						student.add(Integer.valueOf(split[i]));
 					}
-					allClass.add(new Course(Integer.valueOf(split[0]), split[1], split[1], student));
+					allClass.add(new Course(Integer.valueOf(split[0]), split[1], Integer.valueOf(split[1]), student));
 				}
 			} catch (IOException e) {
 				e.printStackTrace();

@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Course {
 	private Integer number;
 	private String name;
-	private String teacher;
-	private ArrayList<String> student;
+	private Integer teacher;
+	private ArrayList<Integer> student;
 	private showFormat showFormat;
 	
 	public Course(Integer number, String name){
@@ -15,7 +15,7 @@ public class Course {
 //		default showFormat is GradesMaxToMin
 		this.showFormat = new GradesMaxToMin();
 	}
-	public Course(Integer number, String name, String teacher, ArrayList<String> student){
+	public Course(Integer number, String name, Integer teacher, ArrayList<Integer> student){
 		this.number = number;
 		this.name = name;
 		this.teacher = teacher;
@@ -28,25 +28,25 @@ public class Course {
 		return this.number;
 	}
 	
-	public String getTeacher() {
+	public Integer getTeacher() {
 		return teacher;
 	}
-	public void setTeacher(String teacher) {
+	public void setTeacher(Integer teacher) {
 		this.teacher = teacher;
 	}
-	public ArrayList<String> getStudents() {
+	public ArrayList<Integer> getStudents() {
 		return student;
 	}
-	public boolean addStudent(String student) {
-		for(String s: this.student)
-			if(s.equals(student))	return false;
+	public boolean addStudent(Integer student) {
+		for(Integer s: this.student)
+			if(s == student)	return false;
 		this.student.add(student);
 		return true;
 	}
 	
-	public boolean deleteStudent(String student) {
-		for(String s: this.student)
-			if(s.equals(student)) {
+	public boolean deleteStudent(Integer student) {
+		for(Integer s: this.student)
+			if(s == student) {
 				this.student.remove(s);
 				return true;
 			}

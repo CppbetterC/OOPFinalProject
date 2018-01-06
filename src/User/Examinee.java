@@ -1,22 +1,27 @@
 package User;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 import Class.CourseList;
 import User.User;
 
 public class Examinee extends User/* implements MailServer*/ {
+	private ArrayList<Integer> Course = new ArrayList<Integer>();
+	
 	public Examinee(User user){
 		super(user);
 		System.out.println("Welcome back, " + getAccount() + "\n");
+		
 		function();
 	}
 	
 	protected void function() {
 		while (true) {
 			System.out.println("1. Change Password\n" + "2. Search Class\n" + "3. Logout\n" + "*****************");
-			System.out.println("Enter your Service: ");
-			switch (scanner.nextInt()) {
+			System.out.println("Choose a Service or Enter a class number directely: ");
+			Integer choice = scanner.nextInt();
+			switch (choice) {
 				case 1: {
 					if(this.setPassword(scanner.nextLine()))
 						System.out.println("Password has been Changed\n");
@@ -31,6 +36,8 @@ public class Examinee extends User/* implements MailServer*/ {
 					return;
 				}
 				default:
+					System.out.println("");
+					System.out.println("1. Change Password\n" + "2. Search Class\n" + "3. Logout\n" + "*****************");
 					break;
 			}
 		}
