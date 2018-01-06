@@ -18,7 +18,7 @@ public class CourseList {
 	private static ArrayList<Course> allClass = new ArrayList<Course>();
 	
 	public CourseList() {
-		ArrayList<Integer> student = new ArrayList<Integer>();
+		ArrayList<Integer> student;
 		FileReader fr;
 		try {
 			fr = new FileReader("src/Class.txt");
@@ -27,10 +27,11 @@ public class CourseList {
 				while(br.ready()) {
 					String Line = br.readLine();
 					String[] split = Line.split(";");
-					for (int i = 3; i < split.length;i++) {
+					student = new ArrayList<Integer>();
+					for (int i = 3; i < split.length; i++) {
 						student.add(Integer.valueOf(split[i]));
 					}
-					allClass.add(new Course(Integer.valueOf(split[0]), split[1], Integer.valueOf(split[1]), student));
+					allClass.add(new Course(Integer.valueOf(split[0]), split[1], Integer.valueOf(split[2]), student));
 				}
 				fr.close();
 			} catch (IOException e) {
@@ -74,6 +75,7 @@ public class CourseList {
 	
 	public static Course getCourse(String search){
 		for(Course c: allClass) {
+			if(search.equals(String.valueOf(c.getNumber())))	return c;
 			if(search.equals(c.getTeacher().toString()))	return c;
 			ArrayList<Integer> students = c.getStudents();
 			for(Integer student: students) {
@@ -166,7 +168,7 @@ public class CourseList {
 					for (int i = 3; i < split.length;i++) {
 						student.add(Integer.valueOf(split[i]));
 					}
-					allClass.add(new Course(Integer.valueOf(split[0]), split[1], Integer.valueOf(split[1]), student));
+					allClass.add(new Course(Integer.valueOf(split[0]), split[1], Integer.valueOf(split[2]), student));
 				}
 			} catch (IOException e) {
 				e.printStackTrace();

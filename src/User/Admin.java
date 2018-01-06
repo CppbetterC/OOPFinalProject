@@ -15,7 +15,6 @@ import Class.CourseList;
 import User.User;
 
 public class Admin extends User implements MailServer {
-	
 	public Admin(User user) {
 		super(user);
 		System.out.println("Welcome back, " + getAccount() + "\n");
@@ -24,59 +23,27 @@ public class Admin extends User implements MailServer {
 	
 	public void function() {
 		while (true) {
-			System.out.println("1. New Class\n" 
-					+ "2. Delete Class\n" 
-					+ "3. Search Class\n" 
-					+ "4. Edit Class\n" 
-					+ "5. Logout\n" + "*****************");
-			System.out.println("Enter your Service: ");
-			switch (scanner.nextInt()) {
+			System.out.println("1. Manage Accounts\n" + "2. Manage Classes\n" + "3. Logout\n" + "*****************");
+			System.out.println("Choose a Service or Enter a class number directely: ");
+			Integer choice = scanner.nextInt();
+			switch (choice) {
 				case 1: {
-//					New Class, To create the class and set the all attribute;
-					System.out.println("System is setting the couse in this semester");
+					if(this.setPassword(scanner.nextLine()))
+						System.out.println("Password has been Changed\n");
+					else
+						System.out.println("Password Change failed\n");
 					break;
 				}
 				case 2: {
+					System.out.println(CourseList.getCourse(scanner.nextLine()));
 					break;
 				}
-				case 3: {
+				default:
 					break;
-				}
-				case 4: {
-					break;
-				}
-				case 5: {
-					System.out.println("Leave System......");
-					System.out.println("bye!");
-					return;
-				}
 			}
 		}
 	}
 	
-	private void writeCourseToFile(ArrayList<Course> courseInformation) {
-		FileWriter fw;
-		BufferedWriter bw;
-		PrintWriter out;
-		ArrayList<Course> tmpCourse = courseInformation;
-		try {
-			fw = new FileWriter("src/Class.txt", true);
-			bw = new BufferedWriter(fw);
-			out = new PrintWriter(bw);
-			
-			// bug , get the address not value;
-			for(int i = 0; i < tmpCourse.size(); i++) {
-				out.print(tmpCourse.get(i).toString() + ";");
-				out.println();
-			}
-			
-			out.close();
-			System.out.println("insert data to file successfully");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-	}
 	@Override
 	public void update(CourseList absClass, Object message, Object newValue) {
 		if (!Objects.isNull(newValue)) {

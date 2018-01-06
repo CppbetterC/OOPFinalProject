@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import User.Main;
 import User.User;
 
 public class Course {
@@ -108,5 +109,9 @@ public class Course {
 				break;
 			}
 		}
+	}
+	@Override
+	public String toString() {
+		return "Class: " + String.valueOf(this.number) + " " + this.name + "\nTeacher: " + Main.getUserName(this.teacher);
 	}
 }

@@ -19,8 +19,6 @@ public class Main {
 	
 	public static void main(String[] args) {
 		CourseList list = new CourseList();
-		list.OpenClassFlie();
-		list.getAllClass();
 		String loginAccount;
 		String loginPassword;
 		System.out.println("Welcome to use the System");
@@ -74,7 +72,7 @@ public class Main {
 //						writeClassToFile();
 //						writeGradesToFile();
 					}
-					else if (user.equals("examinee")) {
+					else if (user.getPermission().equals("examinee")) {
 						System.out.println("Your permission is examinee");
 						login = new Examinee(user);
 //						pass data to writeClassToFile, writeGradesFile
