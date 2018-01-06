@@ -169,15 +169,15 @@ public class CourseList {
 		return false;
 	}
 	
-	public static boolean getGrade(Integer userId, Integer number) {
-		for(Course c: allClass) {
-			if(c.getNumber() == number) {
-				c.getSingleGrade(userId, number);
-				return true;
-			}
-		}
-		return false;
-	}
+//	public static boolean getGrade(Integer userId, Integer number) {
+//		for(Course c: allClass) {
+//			if(c.getNumber() == number) {
+//				c.getSingleGrade(userId, number);
+//				return true;
+//			}
+//		}
+//		return false;
+//	}
 	
 	public static synchronized void addObserver(MailServer mail) {
 		if (mail == null) {
