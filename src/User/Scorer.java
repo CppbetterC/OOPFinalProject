@@ -1,19 +1,22 @@
 package User;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
+import Class.Course;
 import Class.CourseList;
 import User.User;
 
 public class Scorer extends User implements MailServer {
+	Teach teach;
 	public Scorer(User user){
 		super(user);
-		System.out.println("Welcome back, " + getAccount() + "\n");
 		function();
 	}
 	
-	protected void function() {
-		
+	@Override
+	protected void rollAction(Integer choice) {
+		teach = new Teach(this.getId(), choice);
 	}
 
 	@Override

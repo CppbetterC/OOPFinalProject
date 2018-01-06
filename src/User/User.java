@@ -4,10 +4,12 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import Class.Course;
 import Class.CourseList;
 
 public class User {
@@ -17,6 +19,7 @@ public class User {
 	private String account;
 	private String password;
 	private String permission;
+	private ArrayList<Course> course;
 
 	protected Scanner scanner = new Scanner(System.in);
 	
@@ -26,6 +29,7 @@ public class User {
 		this.account = account;
 		this.password = password;
 		this.permission = permission;
+		this.course  = CourseList.getCourse(this.getId());
 		count++;
 	}
 
@@ -35,7 +39,46 @@ public class User {
 		this.account = u.account;
 		this.password = u.password;
 		this.permission = u.permission;
+		this.course  = CourseList.getCourse(this.getId());
+		System.out.println("Welcome back, " + getName() + "\n");
 	}
+	
+	protected void function() {
+		while (true) {
+			System.out.println("Your Classes:");
+			for(Course c: course) {
+				System.out.println(c);
+				System.out.println();
+			}
+			System.out.println("\n\n*****************\n1. Change Password\n" + "2. Search Class\n" + "3. Logout\n*****************");
+			System.out.println("Choose a Service or Enter a class number directely: ");
+			Integer choice = scanner.nextInt();
+			switch (choice) {
+				case 1: {
+					scanner.nextLine();
+					System.out.println("Please Enter new Password: ");
+					if(this.setPassword(scanner.nextLine()))
+						System.out.println("Password has been Changed\n");
+					else
+						System.out.println("Password Change failed\n");
+					break;
+				}
+				case 2: {
+					System.out.println(CourseList.getCourse(scanner.nextLine()));
+					break;
+				}
+				case 3: {
+					return;
+				}
+				default:
+					rollAction(choice);
+					break;
+			}
+		}
+	}
+	
+	//Let different Roll to do different Action
+	protected void rollAction(Integer choice) {}
 
 	public Integer getId() {
 		return id;
