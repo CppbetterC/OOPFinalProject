@@ -15,7 +15,7 @@ public class ClassList {
 	private boolean finalScoreChanged = false;
 	private ArrayList<MailServer> observers = new ArrayList<MailServer>();
 	private Vector obs;
-	private ArrayList<Class> allClass = new ArrayList<Class>();
+	private ArrayList<Course> allClass = new ArrayList<Course>();
 	public ClassList() {
 		obs = new Vector();
 	}
@@ -28,9 +28,7 @@ public class ClassList {
 			obs.addElement(mail);
 		}
 	}
-	public void getAllClass() {
-		System.out.println(allClass.get(0).getTeacher());
-	}
+
 	public void attachObserver(MailServer newObserver) {
 		observers.add(newObserver);
 	}
@@ -63,7 +61,7 @@ public class ClassList {
 					for (int i = 2; i < split.length;i++) {
 						student.add(split[i]);
 					}
-					allClass.add(new Class(split[0],split[1],student));
+					allClass.add(new Course(split[0],split[1],student));
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -71,6 +69,10 @@ public class ClassList {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void getAllClass() {
+		System.out.println(allClass.get(0).getTeacher());
 	}
 	
 }

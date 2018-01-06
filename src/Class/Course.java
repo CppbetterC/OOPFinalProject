@@ -2,30 +2,38 @@ package Class;
 
 import java.util.ArrayList;
 
-public class Class extends ClassList{
+public class Course extends ClassList{
 	private String courseName;
 	private float finalScore;
 	private showFormat showFormat;
-	private String className;
 	private String teacher;
 	private ArrayList<String> student;
 	
-	public Class(String courseName, float finalScore, showFormat s) {
+	public Course(String className, String teacher, ArrayList<String> student){
 		this.courseName = courseName;
-		this.finalScore = finalScore;
-		this.showFormat = s;
-	}
-	public Class(String className, String teacher, ArrayList<String> student){
-		this.className = className;
 		this.teacher = teacher;
 		this.student = student;
+		this.finalScore = -1;
+//		default showFormat is GradesMaxToMin
+		this.showFormat = new GradesMaxToMin();
 	}
-	public String getclassName() {
-		return teacher;
+	
+	public Course(String className){
+		super();
+		this.courseName = courseName;
+//		this.teacher = null;
+//		this.student = null;
+//		this.finalScore = -1;
+//		this.showFormat = new GradesMaxToMin();
 	}
-	public void setclassName(String className) {
-		this.className = className;
-	}
+	
+//	public String getclassName() {
+//		return className;
+//	}
+//	public void setclassName(String className) {
+//		this.className = className;
+//	}
+	
 	public String getTeacher() {
 		return teacher;
 	}
@@ -41,6 +49,10 @@ public class Class extends ClassList{
 	
 	public String getCourseName() {
 		return courseName;
+	}
+	
+	public void setclassName(String courseName) {
+		this.courseName = courseName;
 	}
 	
 	public float getFinalScore() {

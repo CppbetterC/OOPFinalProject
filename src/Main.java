@@ -59,12 +59,15 @@ public class Main {
 			if(account.equals(user.getAccount())) {
 				if(password.equals(user.getPassword())) {
 					if(user.getPermission().equals("admin")) {
+						System.out.println("Your permission is admin");
 						login = new Admin(user);
 					}
 					else if(user.getPermission().equals("scorer")) {
+						System.out.println("Your permission is scorer");
 						login = new Scorer(user);
 					}
 					else if (user.equals("examinee")) {
+						System.out.println("Your permission is examinee");
 						login = new Examinee(user);
 					}
 					else {
