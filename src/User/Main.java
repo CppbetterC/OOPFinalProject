@@ -22,7 +22,6 @@ public class Main {
 		String loginAccount;
 		String loginPassword;
 		System.out.println("Welcome to use the System");
-		System.out.println("Please Login, Enter the Account");
 		while(true) {
 			System.out.print("Account:");
 			loginAccount = scanner.nextLine();
@@ -30,7 +29,7 @@ public class Main {
 			loginPassword = scanner.nextLine();		
 			readAccount();		// prepare the account list for login
 			System.out.println(Verify(loginAccount, loginPassword));	// get the permission of this account
-			System.out.println("hello");
+			restoredClass();
 		}
 	}
 	
@@ -137,16 +136,38 @@ public class Main {
 		return false;
 	}
 	
-	private static void writeClassToFile() {
+	private static void restoredClass() {
 //		pass data to write data to file
 		FileWriter fw;
+		ArrayList<Course> course = CourseList.getAllClass();
+		System.out.println(course.size());
 		try {
 			fw = new FileWriter("src/Class.txt");
-			fw.write("data");
+			for (int i = 0; i < course.size(); i++) {
+				Integer courseId = CourseList.getAllClassId(i);
+				String courseName = CourseList.getAllClassName(i);
+				Integer courseTeacher = CourseList.getAllClassTeacher(i);
+				ArrayList<Integer> courseStudent = CourseList.getAllClassStudent(i);
+				BufferedWriter br = new BufferedWriter(fw);
+				br.write(courseId + ";");
+				br.write(courseName + ";");
+				br.write(courseTeacher + ";");
+				for (Integer j :courseStudent){
+					br.write(String.valueOf(j));
+					if (j == courseStudent.get(courseStudent.size()-1)) {
+						break;
+					}
+					br.write(";");
+				}
+				br.newLine();
+				br.flush();
+			}
+			fw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
+		
 	
 	private static void writeGradesToFile() {
 //		pass data to write data to file

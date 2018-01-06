@@ -75,7 +75,7 @@ public class CourseList {
 			if(search.equals(c.getTeacher().toString()))	return c;
 			ArrayList<Integer> students = c.getStudents();
 			for(Integer student: students) {
-				if(search.equals(student.toString())) return c;;
+				if(search.equals(student.toString())) return c;
 			}
 		}
 		return null;
@@ -207,26 +207,22 @@ public class CourseList {
 //			obs.update(this, mailContext, finalScore);
 //		}
 //	}*/
-	public static void OpenClassFlie() {
-		ArrayList<Integer> student = new ArrayList<Integer>();
-		FileReader fr;
-		try {
-			fr = new FileReader("src/Class.txt");
-			BufferedReader br = new BufferedReader(fr);
-			try {
-				while(br.ready()) {
-					String Line = br.readLine();
-					String[] split = Line.split(";");
-					for (int i = 3; i < split.length;i++) {
-						student.add(Integer.valueOf(split[i]));
-					}
-					allClass.add(new Course(Integer.valueOf(split[0]), split[1], Integer.valueOf(split[2]), student));
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-	}	
+	public static ArrayList<Course> getAllClass() {
+		return allClass;
+	}
+	public static int getAllClasslen() {
+		return allClass.size();
+	}
+	public static int getAllClassId(int index) {
+		return allClass.get(index).getNumber();
+	}
+	public static String getAllClassName(int index) {
+		return allClass.get(index).getName();
+	}
+	public static int getAllClassTeacher(int index) {
+		return allClass.get(index).getTeacher();
+	}
+	public static ArrayList<Integer> getAllClassStudent(int index) {
+		return allClass.get(index).getStudents();
+	}
 }

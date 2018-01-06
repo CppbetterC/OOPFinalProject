@@ -37,6 +37,8 @@ public class Admin extends User implements MailServer {
 					courseManager();
 					break;
 				}
+				case 3:
+					return;
 				default:
 					break;
 			}
