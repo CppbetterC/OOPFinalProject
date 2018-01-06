@@ -29,7 +29,8 @@ public class Main {
 			loginPassword = scanner.nextLine();		
 			readAccount();		// prepare the account list for login
 			System.out.println(Verify(loginAccount, loginPassword));	// get the permission of this account
-			restoredClass();
+			restoreClass();
+			restoreUser();
 		}
 	}
 	
@@ -136,11 +137,10 @@ public class Main {
 		return false;
 	}
 	
-	private static void restoredClass() {
+	private static void restoreClass() {
 //		pass data to write data to file
 		FileWriter fw;
 		ArrayList<Course> course = CourseList.getAllClass();
-		System.out.println(course.size());
 		try {
 			fw = new FileWriter("src/Class.txt");
 			for (int i = 0; i < course.size(); i++) {
@@ -168,13 +168,48 @@ public class Main {
 		}
 	}
 		
-	
-	private static void writeGradesToFile() {
+	private static void restoreCourse() {
+		FileWriter fw;
+		ArrayList<Course> course = CourseList.getAllClass();
+		try {
+			for (int i = 0; i < course.size(); i++) {
+				Integer courseId = CourseList.getAllClassId(i);
+				String courseName = CourseList.getAllClassName(i);
+				Integer courseTeacher = CourseList.getAllClassTeacher(i);
+				ArrayList<Integer> courseStudent = CourseList.getAllClassStudent(i);
+				fw = new FileWriter("src/"+courseName+".txt",true);
+				BufferedWriter br = new BufferedWriter(fw);
+				br.write(courseId + ";");
+				br.newLine();
+				br.flush();
+				fw.close();
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	private static void restoreUser() {
 //		pass data to write data to file
 		FileWriter fw;
 		try {
-			fw = new FileWriter("src/Class.txt");
-			fw.write("data");
+			fw = new FileWriter("src/User.txt");
+			for (int i = 0; i < userList.size(); i++) {
+				Integer id = userList.get(i).getId();
+				String name = userList.get(i).getName();
+				String account = userList.get(i).getAccount();
+				String password = userList.get(i).getPassword();
+				String Permission = userList.get(i).getPermission();
+				BufferedWriter br = new BufferedWriter(fw);
+				br.write(id + ";");
+				br.write(name + ";");
+				br.write(account + ";");
+				br.write(password + ";");
+				br.write(Permission);
+				br.newLine();
+				br.flush();
+			}
+			fw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
