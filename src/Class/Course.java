@@ -181,10 +181,13 @@ public class Course {
 		String flag = scanner.nextLine();
 		if (flag.equals("Y")) {
 			System.out.println("Enter the scores of the every student");
-			System.out.println("update successfully");
+			ArrayList<Integer> scoreOfStudent = new ArrayList<Integer>();
 			for(int i = 0;i < this.student.size(); i++) {
-//				set the scores of the student; 
+				int tmpScore = scanner.nextInt();
+				scoreOfStudent.add(tmpScore);
 			}
+			this.numOfTest.get(choice).setScore(this.student, scoreOfStudent);
+			System.out.println("update successfully");
 		}
 		else if(flag.equals("N")) {
 			System.out.println("update false");
