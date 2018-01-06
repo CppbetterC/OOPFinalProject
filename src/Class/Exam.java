@@ -2,12 +2,8 @@ package Class;
 
 public class Exam extends AbstractExam{
 	
-	 public void test(){
-		 System.out.println("Exam...");
+	 public void setScore(){
+		 System.out.println("This is Exam...");
 	}
 
-	public void addExamSubjects() {
-		// TODO Auto-generated method stub
-		
-	}
 }
