@@ -19,6 +19,7 @@ public class Learn {
 				switch(scanner.nextInt()) {
 					case 1:
 						//c.getGrades();
+						c.getSingleGrade(userId, courseNumber);
 						break;
 					case 2:
 						System.out.println("Are you sure to drop this class?(Y/N) ");
