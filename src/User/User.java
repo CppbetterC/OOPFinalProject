@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import Class.CourseList;
+
 public class User {
 	private static Integer count = 0;
 	private Integer id;

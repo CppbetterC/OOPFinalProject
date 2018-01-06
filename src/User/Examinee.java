@@ -2,10 +2,10 @@ package User;
 
 import java.util.Objects;
 
-import Class.ClassList;
+import Class.CourseList;
 import User.User;
 
-public class Examinee extends User implements MailServer {
+public class Examinee extends User/* implements MailServer*/ {
 	public Examinee(User user){
 		super(user);
 		System.out.println("Welcome back, " + getAccount() + "\n");
@@ -35,9 +35,8 @@ public class Examinee extends User implements MailServer {
 			}
 		}
 	}
-
-	@Override
-	public void update(ClassList absClass, Object message, Object newValue) {
+/*
+	public static void update(CourseList absClass, Object message, Object newValue) {
 		if (!Objects.isNull(newValue)) {
 			String finalScore = newValue.toString();
 			String tmpMessage = message.toString();
@@ -45,5 +44,5 @@ public class Examinee extends User implements MailServer {
 			System.out.println("期末成績已經被改變 ->分數:" + finalScore);
 //			call write method to write file to txt
 		}
-	}
+	}*/
 }
