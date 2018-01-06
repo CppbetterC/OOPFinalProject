@@ -72,49 +72,75 @@ public class Course {
 		return name;
 	}
 	
-	public void listGradeReport() {
-//		implement the showFormat
-//		using the design pattern(strategy)
+//	implement the showFormat
+//	using the design pattern(strategy)
+	public void getAllGrade() {
+		int index = 0;
+		System.out.println("Which index do you want to select");
+		
+		for(AbstractExam app : numOfTest) {
+			System.out.println(index + ":" + app.getClass().toString());
+			index++;
+		}
+		System.out.println("Choice:");
+		int choice = scanner.nextInt();
+		System.out.println("Do you want to select this?(Y/N)\nIndex = " 
+		+ this.numOfTest.get(choice));
+		String flag = scanner.nextLine();
+		if (flag.equals("Y")) {
+			Map<String, String> tmpScore = new HashMap<String, String>();
+			tmpScore = this.numOfTest.get(choice).getStudentScore();
+			this.showFormat.showGrades(tmpScore);
+
+			System.out.println("select successfully");
+		}
+		else if(flag.equals("N")) {
+			System.out.println("select false");
+		}
+		else {
+			System.out.println("error instruction");
+		}
 	}
 	
 	public void getSingleGrade(Integer userId, Integer courseName) {
 		ArrayList<String> id = new ArrayList<String>();
-		Map<String, String> studentMidScore = new HashMap<String, String>();
-		Map<String, String> studentFinScore =new HashMap<String, String>();
-		FileReader fr;
-		int count = 0;
-		try {
-			fr = new FileReader("src/" + courseName.toString() + ".txt");
-			BufferedReader br = new BufferedReader(fr);
-			try {
-				while(br.ready()) {
-					if(count != 0) {
-						String Line = br.readLine();
-						String[] split = Line.split(";");
-						id.add(split[0]);
-						studentMidScore.put(split[0], split[1]);
-						studentFinScore.put(split[0], split[2]);
-					}
-					count++;
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		for(int i = 1; i < id.size(); i++) {
-			if ( userId == Integer.parseInt(id.get(i))){
-				System.out.println("Searching successfully...");
-				System.out.println("[UserId]\t\t[Mid]\t\t[Fin]");
-				System.out.println("--------+--------------");
-				System.out.print(userId + "\t|\t" 
-				+ studentMidScore.get(id.get(i)) 
-				+"\t|\t"
-				+ studentFinScore.get(id.get(i)));
-				break;
-			}
-		}
+		Map<String, String>  tmpScore = new HashMap<String, String>();
+		
+
+//		FileReader fr;
+//		int count = 0;
+//		try {
+//			fr = new FileReader("src/" + courseName.toString() + ".txt");
+//			BufferedReader br = new BufferedReader(fr);
+//			try {
+//				while(br.ready()) {
+//					if(count != 0) {
+//						String Line = br.readLine();
+//						String[] split = Line.split(";");
+//						id.add(split[0]);
+//						studentMidScore.put(split[0], split[1]);
+//						studentFinScore.put(split[0], split[2]);
+//					}
+//					count++;
+//				}
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//		}
+//		for(int i = 1; i < id.size(); i++) {
+//			if ( userId == Integer.parseInt(id.get(i))){
+//				System.out.println("Searching successfully...");
+//				System.out.println("[UserId]\t\t[Mid]\t\t[Fin]");
+//				System.out.println("--------+--------------");
+//				System.out.print(userId + "\t|\t" 
+//				+ studentMidScore.get(id.get(i)) 
+//				+"\t|\t"
+//				+ studentFinScore.get(id.get(i)));
+//				break;
+//			}
+//		}
 	}
 	
 	@Override
@@ -123,7 +149,7 @@ public class Course {
 	}
 
 //	increase the test and the type of the text either Exam or Quiz
-	public void addNumOfTest() {
+	public void addGrade() {
 		AbstractExamApp app;
 		System.out.println("Which type do you want to add");
 		System.out.println("1.Quiz:\n2.Exam:\n");
@@ -141,7 +167,7 @@ public class Course {
 		}
 	}
 	
-	public void deleteNumOfTest() {
+	public void deleteGrade() {
 		int index = 0;
 		System.out.println("Which index do you want to delete");
 		
@@ -166,7 +192,7 @@ public class Course {
 		}
 	}
 	
-	public void setGradeOfCourse() {
+	public void setGrade() {
 		int index = 0;
 		System.out.println("Which index do you want to set grades");
 		

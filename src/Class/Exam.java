@@ -7,7 +7,7 @@ import java.util.Map;
 public class Exam extends AbstractExam{
 	private Map<String, String> studentScore = new HashMap<String, String>();
 	
-	 public Map<String, String> getStudentMidScore() {
+	public Map<String, String> getStudentScore() {
 		return studentScore;
 	}
 

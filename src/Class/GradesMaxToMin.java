@@ -1,17 +1,23 @@
 package Class;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 public class GradesMaxToMin implements showFormat{
 
 	private float [] grades; 
-	private String [] nid;
+	private int [] nid;
+	private int count = 0;
 	
 	@Override
-	public void showGrades(float[] grades, String[] nid) {
-//		need to know which subject do user want to retrieve.
-		this.grades = grades;
-		this.nid = nid;
+	public void showGrades(Map<String, String> grades) {
+		for(String key : grades.keySet()) {
+			this.grades[count] = Float.parseFloat(grades.get(key));
+			this.nid[count] = Integer.parseInt(key.toString());
+			count++;
+		}
 		int left = 0;
-		int right = grades.length - 1;
+		int right = this.grades.length - 1;
 		System.out.println("GradesMinToMax......");
 		quickSort(left, right, this.grades, this.nid);
 		System.out.println("[學號]\t\t[成績]");
@@ -21,7 +27,7 @@ public class GradesMaxToMin implements showFormat{
 		}
 	}
 	
-    public void quickSort(int left, int right, float[] numberArray, String[] nid) {
+    public void quickSort(int left, int right, float[] numberArray, int[] nid) {
         if(left > right)
         {
             return;
@@ -29,9 +35,10 @@ public class GradesMaxToMin implements showFormat{
         int startIndex = left; 
         int endIndex = right;   
         float baseValue = numberArray[left];
-        String baseStr = nid[left];
+        
+        int baseStr = nid[left];
         float temp;
-        String tempStr;
+        int tempStr;
 
         while (startIndex != endIndex)
         {
