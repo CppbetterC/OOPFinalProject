@@ -8,6 +8,7 @@ import Class.CourseList;
 import User.User;
 
 public class Examinee extends User/* implements MailServer*/ {
+	private ArrayList<Course> course  = CourseList.getCourse(this.getId());
 	Learn learn;
 	public Examinee(User user){
 		super(user);
@@ -17,7 +18,11 @@ public class Examinee extends User/* implements MailServer*/ {
 	
 	protected void function() {
 		while (true) {
-			System.out.println("1. Change Password\n" + "2. Search Class\n" + "3. Logout\n" + "*****************");
+			System.out.println("Your Classes:");
+			for(Course c: course) {
+				System.out.println(c.getNumber() + c.getName());
+			}
+			System.out.println("\n\n1. Change Password\n" + "2. Search Class\n" + "3. Logout\n" + "*****************");
 			System.out.println("Choose a Service or Enter a class number directely: ");
 			Integer choice = scanner.nextInt();
 			switch (choice) {
