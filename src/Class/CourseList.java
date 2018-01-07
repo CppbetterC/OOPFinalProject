@@ -48,9 +48,9 @@ public class CourseList {
 							minScore.add(Integer.valueOf(1));
 							finScore.add(Integer.valueOf(2));
 						}
-						allClass.add(new Course(Integer.valueOf(split[0]), split[1], Integer.valueOf(split[2]),
-								student, minScore, finScore));
 					}
+					allClass.add(new Course(Integer.valueOf(split[0]), split[1], Integer.valueOf(split[2]),
+								student, minScore, finScore));
 				}
 				fr.close();
 			} catch (IOException e) {

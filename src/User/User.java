@@ -78,7 +78,9 @@ public class User {
 				}
 				case 2: {
 					System.out.print("Please Enter Class Number or Teacher name or Student name: ");
-					System.out.println(CourseList.getCourse(scanner.nextLine()));
+					for(Course c: CourseList.getCourse(scanner.nextLine())) {
+						System.out.println(c);
+					}
 					break;
 				}
 				case 3: {
