@@ -30,10 +30,15 @@ public class Main {
 			loginPassword = scanner.nextLine();		
 			readAccount();		// prepare the account list for login
 			System.out.println(Verify(loginAccount, loginPassword));	// get the permission of this account
-			//deleteAllFile(new File("src/DataBase"));
+			for (int i = 0; i < userList.size(); i++) {
+				String account = userList.get(i).getAccount();
+				String password = userList.get(i).getPassword();
+				System.out.println(account + ": " + password);
+			}
+			deleteAllFile(new File("src/DataBase"));
 			restoreClass();
 			restoreUser();
-			//restoreCourse();
+			restoreCourse();
 		}
 	}
 	
@@ -85,7 +90,6 @@ public class Main {
 					else {
 						return "Login Failed\n";
 					}
-					user = login;
 					return "You have logged out\n";
 				}
 				else
@@ -180,7 +184,7 @@ public class Main {
 				String courseName = CourseList.getAllClassName(i);
 				Integer courseTeacher = CourseList.getAllClassTeacher(i);
 				ArrayList<Integer> courseStudent = CourseList.getAllClassStudent(i);
-				fw = new FileWriter("src/DataBase/"+courseName+".txt",true);
+				fw = new FileWriter("src/DataBase/"+courseName+".txt");
 				BufferedWriter br = new BufferedWriter(fw);
 				br.write(courseTeacher + ";");
 				for (int j = 0; j < test.gettestlen(); j++) {
