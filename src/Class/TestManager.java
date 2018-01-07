@@ -1,6 +1,7 @@
 package Class;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 
 import User.Main;
@@ -41,4 +42,15 @@ public abstract class TestManager {
 		return tests.size();
 	}
 	
+	public boolean setGrade(ArrayList<Integer> students, 
+			ArrayList<Integer> MinScore, ArrayList<Integer> FinScore) {
+		if (students.size()>0) {
+			this.tests.get(0).setGrade(MinScore);
+			this.tests.get(1).setGrade(FinScore);
+			System.out.print("Data has been loaded complete");
+			return true;
+		}
+		System.out.println("Data has not been loaded complete");
+		return false;
+	}
 }

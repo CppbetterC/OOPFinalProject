@@ -27,12 +27,14 @@ public class Course {
 		test = new FengChiaUniversity(student.size());
 		count++;
 	}
-	public Course(Integer number, String name, Integer teacher, ArrayList<Integer> student){
+	public Course(Integer number, String name, Integer teacher,
+			ArrayList<Integer> student, ArrayList<Integer> studentMinScore, ArrayList<Integer> studentFinScore){
 		this.number = number;
 		this.name = name;
 		this.teacher = teacher;
 		this.student = student;
 		test = new FengChiaUniversity(student.size());
+		test.setGrade(this.student, studentMinScore, studentFinScore);
 		count = this.number + 1;
 	}
 	

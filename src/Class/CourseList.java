@@ -18,11 +18,12 @@ public class CourseList {
 	private static ArrayList<Course> allClass = new ArrayList<Course>();
 	
 	public CourseList() {
-		ArrayList<Integer> student;
-		FileReader fr;
+		ArrayList<Integer> student, minScore, finScore;
+		FileReader fr, fr2;
+		BufferedReader br, br2;
 		try {
 			fr = new FileReader("src/DataBase/Class.txt");
-			BufferedReader br = new BufferedReader(fr);
+			br = new BufferedReader(fr);
 			try {
 				while(br.ready()) {
 					String Line = br.readLine();
@@ -31,7 +32,22 @@ public class CourseList {
 					for (int i = 3; i < split.length; i++) {
 						student.add(Integer.valueOf(split[i]));
 					}
-					allClass.add(new Course(Integer.valueOf(split[0]), split[1], Integer.valueOf(split[2]), student));
+					
+
+					fr2 = new FileReader("src/DataBase/" + split[1]+".txt");
+					br2 = new BufferedReader(fr2);
+					while(br2.ready()) {
+						minScore = new ArrayList<Integer>();
+						finScore = new ArrayList<Integer>();
+						String str = br2.readLine();
+						String[] slice = str.split(";");
+						for(int i = 1; i < slice.length; i++) {
+							minScore.add(Integer.valueOf(1));
+							finScore.add(Integer.valueOf(2));
+						}
+						allClass.add(new Course(Integer.valueOf(split[0]), split[1], Integer.valueOf(split[2]),
+								student, minScore, finScore));
+					}
 				}
 				fr.close();
 			} catch (IOException e) {
