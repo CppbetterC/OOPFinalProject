@@ -30,7 +30,6 @@ public abstract class TestManager {
 		Integer score = 0;
 		for(int i = 0; i < students.size(); i++) {
 			if(students.get(i) == studentId){
-				System.out.println(tests.get(index));
 				score = tests.get(index).scores.get(i);
 				break;
 			}

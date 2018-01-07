@@ -38,7 +38,7 @@ public class Main {
 	private static void readAccount() {
 		FileReader fr;
 		try {
-			fr = new FileReader("src/User.txt");
+			fr = new FileReader("src/DataBase/User.txt");
 			BufferedReader br = new BufferedReader(fr);
 			try {
 				while(br.ready()) {
@@ -143,7 +143,7 @@ public class Main {
 		FileWriter fw;
 		ArrayList<Course> course = CourseList.getAllClass();
 		try {
-			fw = new FileWriter("src/Class.txt");
+			fw = new FileWriter("src/DataBase/Class.txt");
 			for (int i = 0; i < course.size(); i++) {
 				Integer courseId = CourseList.getAllClassId(i);
 				String courseName = CourseList.getAllClassName(i);
@@ -178,7 +178,7 @@ public class Main {
 				String courseName = CourseList.getAllClassName(i);
 				Integer courseTeacher = CourseList.getAllClassTeacher(i);
 				ArrayList<Integer> courseStudent = CourseList.getAllClassStudent(i);
-				fw = new FileWriter("src/"+courseName+".txt",true);
+				fw = new FileWriter("src/DataBase/"+courseName+".txt",true);
 				BufferedWriter br = new BufferedWriter(fw);
 				br.write(courseTeacher + ",");
 				for (int j = 0; j < test.gettestlen(); j++) {
@@ -190,7 +190,6 @@ public class Main {
 					br.write(courseStudent.get(k) + ";");
 					for(int l = 0; l < test.gettestlen(); l++) {
 						Integer textGrade = test.getGrade(l, courseStudent.get(k), courseStudent);
-						System.out.println(textGrade);
 						br.write(textGrade + ";");
 					}
 					br.newLine();
@@ -207,7 +206,7 @@ public class Main {
 //		pass data to write data to file
 		FileWriter fw;
 		try {
-			fw = new FileWriter("src/User.txt");
+			fw = new FileWriter("src/DataBase/User.txt");
 			for (int i = 0; i < userList.size(); i++) {
 				Integer id = userList.get(i).getId();
 				String name = userList.get(i).getName();

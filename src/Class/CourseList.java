@@ -21,7 +21,7 @@ public class CourseList {
 		ArrayList<Integer> student;
 		FileReader fr;
 		try {
-			fr = new FileReader("src/Class.txt");
+			fr = new FileReader("src/DataBase/Class.txt");
 			BufferedReader br = new BufferedReader(fr);
 			try {
 				while(br.ready()) {
