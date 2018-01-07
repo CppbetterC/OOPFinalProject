@@ -21,7 +21,7 @@ public class Examinee extends User implements MailServer {
 	
 	@Override
 	protected void rollAction(Integer choice) {
-		learn = new Learn(this.getId(), choice);
+		learn = new Learn(this.getId(), choice, course);
 	}
 
 	@Override

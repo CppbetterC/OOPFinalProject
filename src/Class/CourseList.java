@@ -79,10 +79,11 @@ public class CourseList {
 	public static ArrayList<Course> getCourse(Integer id){
 		ArrayList<Course> chosen = new ArrayList<Course>();
 		for(Course c: allClass) {
-			if(id == c.getTeacher())	chosen.add(c);
+			if(id.equals(c.getTeacher()))	chosen.add(c);
+			else if(id.equals(c.getNumber()))	chosen.add(c);
 			ArrayList<Integer> students = c.getStudents();
 			for(Integer student: students) {
-				if(student == id) chosen.add(c);
+				if(student.equals(id)) chosen.add(c);
 			}
 		}
 		return chosen;
@@ -111,7 +112,7 @@ public class CourseList {
 	}
 	public static boolean setTeacher(Integer number, Integer teacher) {
 		for(Course c: allClass) {
-			if(c.getNumber() == number) {
+			if(c.getNumber().equals(number) && !c.getTeacher().equals(null)) {
 				c.setTeacher(teacher);
 				return true;
 			}

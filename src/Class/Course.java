@@ -76,7 +76,7 @@ public class Course {
 	
 	@Override
 	public String toString() {
-		return "\n" + "Class: " + String.valueOf(this.number) + " " + this.name + "\nTeacher: " + Main.getUserName(this.teacher) + student;
+		return "Class: " + String.valueOf(this.number) + " " + this.name + "\nTeacher: " + Main.getUserName(this.teacher);
 	}	
 	
 	public void addGrade(String name) {
