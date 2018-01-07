@@ -19,7 +19,7 @@ public class User {
 	private String account;
 	private String password;
 	private String permission;
-	private ArrayList<Course> course;
+	protected ArrayList<Course> course;
 
 	protected Scanner scanner = new Scanner(System.in);
 	
@@ -57,9 +57,6 @@ public class User {
 	
 	protected void function() {
 		while (true) {
-			System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@");
-			System.out.println(CourseList.allClass);
-			System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@");
 			System.out.println("Your Classes:");
 			for(Course c: course) {
 				System.out.println(c);
