@@ -49,7 +49,7 @@ public class CourseList {
 	
 	public static boolean deleteCourse(Integer number) {
 		for(Course c: allClass) {
-			if(c.getNumber() == number) {
+			if(c.getNumber().equals(number)) {
 				allClass.remove(c);
 				return true;
 			}

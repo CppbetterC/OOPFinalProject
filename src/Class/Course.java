@@ -17,7 +17,7 @@ public class Course {
 	private Integer number;
 	private String name;
 	private Integer teacher;
-	private ArrayList<Integer> student;
+	private ArrayList<Integer> student = new ArrayList<Integer>();
 	private TestManager test;
 	Scanner scanner = new Scanner(System.in);
 	
@@ -53,15 +53,20 @@ public class Course {
 		for(Integer s: this.student)
 			if(s == student)	return false;
 		this.student.add(student);
+		test.addStudent();
 		return true;
 	}
 	
 	public boolean deleteStudent(Integer student) {
-		for(Integer s: this.student)
+		int i = 0;
+		for(Integer s: this.student) {
 			if(s == student) {
 				this.student.remove(s);
+				test.deleteStudent(i);
 				return true;
 			}
+			i++;
+		}
 		return false;
 	}
 	

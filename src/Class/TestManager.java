@@ -21,6 +21,17 @@ public abstract class TestManager {
 	
 	public abstract boolean setWeight();
 	
+	public void addStudent() {
+		for(AbstractExam test: tests) {
+			test.scores.add(0);
+		}
+	}
+	
+	public void deleteStudent(int index) {
+		for(AbstractExam test: tests) {
+			test.scores.remove(index);
+		}
+	}
 	
 	public String getName(int index) {
 		return tests.get(index).name;
