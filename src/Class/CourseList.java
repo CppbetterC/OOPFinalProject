@@ -214,4 +214,7 @@ public class CourseList {
 	public static ArrayList<Integer> getAllClassStudent(int index) {
 		return allClass.get(index).getStudents();
 	}
+	public static TestManager getAllClassGrade(int index) {
+		return allClass.get(index).getTestManager();
+	}
 }

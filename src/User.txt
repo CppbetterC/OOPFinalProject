@@ -27,4 +27,4 @@
 26;Ethan;examinee17;0000;examinee
 27;Jayden;examinee18;0000;examinee
 28;Muhammad;examinee19;0000;examinee
-29;Carter;examinee20;0000;examinee0;Sophia;admin;0000;admin
+29;Carter;examinee20;0000;examinee

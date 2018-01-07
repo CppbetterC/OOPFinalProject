@@ -97,4 +97,7 @@ public class Course {
 	public void getGrade(Integer userId) {
 		test.getGrade(this.student, userId);
 	}
+	public TestManager getTestManager() {
+		return test;
+	}
 }
