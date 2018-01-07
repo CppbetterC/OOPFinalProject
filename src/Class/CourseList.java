@@ -133,14 +133,14 @@ public class CourseList {
 	
 	public static boolean deleteStudent(Integer number, Integer student) {
 		for(Course c: allClass) {
-			if(c.getNumber() == number) return c.deleteStudent(student);
+			if(c.getNumber().equals(number)) return c.deleteStudent(student);
 		}
 		return false;
 	}
 	
 	public static String getName(Integer number) {
 		for(Course c: allClass) {
-			if(c.getNumber() == number) return c.getName();
+			if(c.getNumber().equals(number)) return c.getName();
 		}
 		return "Course " + String.valueOf(number) + " No found";
 	}

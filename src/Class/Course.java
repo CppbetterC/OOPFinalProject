@@ -60,14 +60,12 @@ public class Course {
 	}
 	
 	public boolean deleteStudent(Integer student) {
-		int i = 0;
-		for(Integer s: this.student) {
-			if(s == student) {
-				this.student.remove(s);
+		for(int i = 0; i < this.student.size(); i++) {
+			if(this.student.get(i).equals(student)) {
+				this.student.remove(i);
 				test.deleteStudent(i);
 				return true;
 			}
-			i++;
 		}
 		return false;
 	}
@@ -78,7 +76,7 @@ public class Course {
 	
 	@Override
 	public String toString() {
-		return "Class: " + String.valueOf(this.number) + " " + this.name + "\nTeacher: " + Main.getUserName(this.teacher);
+		return "\n" + "Class: " + String.valueOf(this.number) + " " + this.name + "\nTeacher: " + Main.getUserName(this.teacher) + student;
 	}	
 	
 	public void addGrade(String name) {

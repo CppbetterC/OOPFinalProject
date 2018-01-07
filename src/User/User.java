@@ -57,6 +57,9 @@ public class User {
 	
 	protected void function() {
 		while (true) {
+			System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@");
+			System.out.println(CourseList.allClass);
+			System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@");
 			System.out.println("Your Classes:");
 			for(Course c: course) {
 				System.out.println(c);
