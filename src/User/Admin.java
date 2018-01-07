@@ -24,20 +24,29 @@ public class Admin extends User implements MailServer {
 	@Override
 	public void function() {
 		while (true) {
-			System.out.println("1. Manage Accounts\n" + "2. Manage Classes\n" + "3. Logout\n" + "*****************");
+			System.out.println("1. Change Password\n2. Manage Accounts\n" + "3. Manage Classes\n" + "4. Logout\n" + "*****************");
 			System.out.println("Choose a Service or Enter a class number directely: ");
-			Integer choice = scanner.nextInt();
+			Integer choice = Integer.valueOf(scanner.nextLine());
 			System.out.flush();
 			switch (choice) {
-				case 1: {
+				case 1:{
+					System.out.println("Please Enter new Password: ");
+					if(Main.setPassword(this.getId(), scanner.nextLine())){
+						System.out.println("Password has been Changed\n");
+					}
+					else
+						System.out.println("Password Change failed\n");
+					break;
+				} 
+				case 2:{
 					accountManager();
 					break;
 				}
-				case 2: {
+				case 3: {
 					courseManager();
 					break;
 				}
-				case 3:
+				case 4:
 					return;
 				default:
 					break;
@@ -50,7 +59,7 @@ public class Admin extends User implements MailServer {
 			Main.printUserList();
 			System.out.println("\n\n*****************\n1. Add Accounts\n2. Delete Accounts\n3. Back\n*****************");
 			System.out.println("Choose a Service: ");
-			Integer choice = scanner.nextInt();
+			Integer choice = Integer.valueOf(scanner.nextLine());
 			switch (choice) {
 				case 1: {
 					System.out.print("Name: ");
@@ -70,7 +79,7 @@ public class Admin extends User implements MailServer {
 				}
 				case 2: {
 					System.out.print("Account id: ");
-					Integer id = scanner.nextInt();
+					Integer id = Integer.valueOf(scanner.nextLine());
 					System.out.flush();
 					if(Main.deleteAccount(id))
 						System.out.println("Account Delete successful!!");
@@ -92,7 +101,7 @@ public class Admin extends User implements MailServer {
 			CourseList.printAllCourse();
 			System.out.println("\n\n*****************\n1. Add Class\n2. Delete Class\n3. Back\n*****************");
 			System.out.println("Choose a Service: ");
-			Integer choice = scanner.nextInt();
+			Integer choice = Integer.valueOf(scanner.nextLine());
 			switch (choice) {
 				case 1: {
 					System.out.print("Class Name: ");
@@ -104,7 +113,7 @@ public class Admin extends User implements MailServer {
 				}
 				case 2: {
 					System.out.print("Class id: ");
-					Integer id = scanner.nextInt();
+					Integer id = Integer.valueOf(scanner.nextLine());
 					System.out.flush();
 					if(CourseList.deleteCourse(id))
 						System.out.println("Class Delete successful!!");

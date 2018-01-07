@@ -30,11 +30,6 @@ public class Main {
 			loginPassword = scanner.nextLine();		
 			readAccount();		// prepare the account list for login
 			System.out.println(Verify(loginAccount, loginPassword));	// get the permission of this account
-			for (int i = 0; i < userList.size(); i++) {
-				String account = userList.get(i).getAccount();
-				String password = userList.get(i).getPassword();
-				System.out.println(account + ": " + password);
-			}
 			deleteAllFile(new File("src/DataBase"));
 			restoreClass();
 			restoreUser();
