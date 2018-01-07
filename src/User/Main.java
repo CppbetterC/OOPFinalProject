@@ -194,7 +194,11 @@ public class Main {
 					br.write(courseStudent.get(k) + ";");
 					for(int l = 0; l < test.gettestlen(); l++) {
 						Integer textGrade = test.getGrade(l, courseStudent.get(k), courseStudent);
-						br.write(textGrade + ";");
+						br.write(textGrade);
+						if (l == test.gettestlen()-1) {
+							break;
+						}
+						br.write(";");
 					}
 					br.newLine();
 				}
