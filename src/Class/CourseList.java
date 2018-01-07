@@ -16,7 +16,7 @@ public class CourseList {
 	private static boolean finalScoreChanged = false;
 	private static ArrayList<MailServer> observers = new ArrayList<MailServer>();
 	private static Vector obs = new Vector();
-	private static ArrayList<Course> allClass = new ArrayList<Course>();
+	public static ArrayList<Course> allClass = new ArrayList<Course>();
 	
 	public CourseList() {
 		ArrayList<Integer> student, minScore, finScore;

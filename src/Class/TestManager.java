@@ -58,10 +58,8 @@ public abstract class TestManager {
 		if (students.size()>0) {
 			this.tests.get(0).setGrade(MinScore);
 			this.tests.get(1).setGrade(FinScore);
-			System.out.print("Data has been loaded complete");
 			return true;
 		}
-		System.out.println("Data has not been loaded complete");
 		return false;
 	}
 }

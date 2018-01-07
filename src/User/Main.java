@@ -62,11 +62,6 @@ public class Main {
 				if(password.equals(user.getPassword())) {
 					if(user.getPermission().equals("admin")) {
 						System.out.println("Your permission is admin");
-						MailServer user1 = new Examinee();
-						MailServer user2 = new Scorer();
-						CourseList.attachObserver(user1);
-						CourseList.attachObserver(user2);
-						
 						login = new Admin(user);
 //						pass data to writeClassToFile, writeGradesFile
 //						writeClassToFile();
@@ -75,11 +70,6 @@ public class Main {
 					}
 					else if(user.getPermission().equals("scorer")) {
 						System.out.println("Your permission is scorer");
-						MailServer user1 = new Admin();
-						MailServer user2 = new Examinee();
-						CourseList.attachObserver(user1);
-						CourseList.attachObserver(user2);
-						
 						login = new Scorer(user);
 //						pass data to writeClassToFile, writeGradesFile
 //						writeClassToFile();
@@ -87,11 +77,6 @@ public class Main {
 					}
 					else if (user.getPermission().equals("examinee")) {
 						System.out.println("Your permission is examinee");
-						MailServer user1 = new Admin();
-						MailServer user2 = new Scorer();
-						CourseList.attachObserver(user1);
-						CourseList.attachObserver(user2);
-						
 						login = new Examinee(user);
 //						pass data to writeClassToFile, writeGradesFile
 //						writeClassToFile();
@@ -176,6 +161,10 @@ public class Main {
 					}
 					br.write(";");
 				}
+				if (i == course.size()-1) {
+					br.flush();
+					break;
+				}
 				br.newLine();
 				br.flush();
 			}
@@ -216,6 +205,9 @@ public class Main {
 						}
 						br.write(";");
 					}
+					if (k == courseStudent.size()-1) {
+						break;
+					}
 					br.newLine();
 				}
 				br.flush();
@@ -243,6 +235,10 @@ public class Main {
 				br.write(account + ";");
 				br.write(password + ";");
 				br.write(Permission);
+				if (i == userList.size()-1) {
+					br.flush();
+					break;
+				}
 				br.newLine();
 				br.flush();
 			}
