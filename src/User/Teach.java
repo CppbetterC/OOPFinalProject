@@ -17,7 +17,8 @@ public class Teach {
 					break;
 				case 2:
 					System.out.flush();
-					CourseList.addGrade(courseNumber);
+					System.out.println("Class name: ");
+					CourseList.addGrade(courseNumber, scanner.nextLine());
 					break;
 				case 3:
 					System.out.flush();

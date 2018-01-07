@@ -128,58 +128,6 @@ public class CourseList {
 			System.out.println(c);
 		}
 	}
-	
-	public static boolean addGrade(Integer number) {
-		for(Course c: allClass) {
-			if(c.getNumber() == number) {
-				c.addGrade();
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public static boolean deleteGrade(Integer number) {
-		for(Course c: allClass) {
-			if(c.getNumber() == number) {
-				c.deleteGrade();
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public static boolean setGrade(Integer number) {
-		for(Course c: allClass) {
-			if(c.getNumber() == number) {
-				c.setGrade();
-				String message = "Scores had been changed.Please check your grades again";
-				notifyObserverGetFinalScore(message);
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public static boolean getGrade(Integer number) {
-		for(Course c: allClass) {
-			if(c.getNumber() == number) {
-				c.getAllGrade();
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public static boolean getGrade(Integer userId, Integer number) {
-		for(Course c: allClass) {
-			if(c.getNumber() == number) {
-				c.getSingleGrade(userId, number);
-				return true;
-			}
-		}
-		return false;
-	}
 
 	public static void attachObserver(MailServer newObserver) {
 		observers.add(newObserver);
@@ -190,6 +138,53 @@ public class CourseList {
 		for(MailServer obs : observers) {
 			obs.update(mailContext);
 		}
+	}
+	
+	public static boolean addGrade(Integer number, String name) {
+		for(Course c: allClass) {
+			if(c.getNumber() == number) {
+				c.addGrade(name);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static boolean deleteGrade(Integer number) {
+		for(Course c: allClass) {
+			if(c.getNumber() == number) {
+				return c.deleteGrade();
+			}
+		}
+		return false;
+	}
+	
+	public static boolean setGrade(Integer number) {
+		for(Course c: allClass) {
+			if(c.getNumber() == number) {
+				return c.setGrade();
+			}
+		}
+		return false;
+	}
+	
+	public static boolean getGrade(Integer number) {
+		for(Course c: allClass) {
+			if(c.getNumber() == number) {
+				return c.getGrade();
+			}
+		}
+		return false;
+	}
+
+	public static boolean getGrade(Integer number, Integer userId) {
+		for(Course c: allClass) {
+			if(c.getNumber() == number) {
+				c.getGrade(userId);
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public static ArrayList<Course> getAllClass() {

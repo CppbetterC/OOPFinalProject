@@ -18,19 +18,13 @@ public class Course {
 	private String name;
 	private Integer teacher;
 	private ArrayList<Integer> student;
-	private showFormat showFormat;
+	private TestManager test;
 	Scanner scanner = new Scanner(System.in);
-	
-//	every AbstractExamApp will new Exam or Quiz;
-//	We will set and get the score of the exam or quiz by this variable;
-	private ArrayList<AbstractExam> numOfTest = new ArrayList<AbstractExam>();
 	
 	public Course(String name){
 		this.number = count;
 		this.name = name;
-//		default showFormat is GradesMaxToMin
-// 		we can change the showFormat to showSingleGrade
-		this.showFormat = new GradesMaxToMin();
+		test = new TestManager();
 		count++;
 	}
 	public Course(Integer number, String name, Integer teacher, ArrayList<Integer> student){
@@ -38,8 +32,7 @@ public class Course {
 		this.name = name;
 		this.teacher = teacher;
 		this.student = student;
-//		default showFormat is GradesMaxToMin
-		this.showFormat = new GradesMaxToMin();
+		test = new TestManager();
 		count = this.number + 1;
 	}
 	
@@ -76,107 +69,28 @@ public class Course {
 		return name;
 	}
 	
-//	implement the showFormat
-//	using the design pattern(strategy)
-	public void getAllGrade() {
-		this.showFormat.showGrades(this.numOfTest);
-	}
-
-//	Get this student all grades in this course
-	public void getSingleGrade(Integer userId, Integer courseNumber) {
-		ArrayList<String> id = new ArrayList<String>();
-		Map<String, String>  tmpScore = new HashMap<String, String>();
-		String nid = userId.toString();
-		System.out.println("Your nid is " + nid);
-		System.out.println("[課程代碼]:" + courseNumber);
-		System.out.println("--------+--------------");
-		for(int i = 0; i < this.numOfTest.size(); i++) {
-			tmpScore = this.numOfTest.get(i).getStudentScore();
-			String selectedScope = tmpScore.get(nid);
-			System.out.println("[第" + (i+1) + "次考試]" + "\t|\t[" + selectedScope + "]");
-		}
-		System.out.println("-----------------------");
-	}
-	
 	@Override
 	public String toString() {
 		return "Class: " + String.valueOf(this.number) + " " + this.name + "\nTeacher: " + Main.getUserName(this.teacher);
+	}	
+	
+	public void addGrade(String name) {
+		test.addGrade(name);
+	}
+	
+	public boolean deleteGrade() {
+		return test.deleteGrade();
+	}
+	
+	public boolean setGrade() {
+		return test.setGrade(this.student);
+	}
+	
+	public boolean getGrade() {
+		return test.getGrade(this.student);
 	}
 
-//	increase the test and the type of the text either Exam or Quiz
-	public void addGrade() {
-		AbstractExamApp app;
-		System.out.println("Which type do you want to add");
-		System.out.println("1.Quiz:\n2.Exam:\n");
-		int choice = scanner.nextInt();
-		if (choice == 1) {
-			 app = new QuizApp();
-			this.numOfTest.add(app.getTypeOfTest());
-		}
-		else if (choice == 2) {
-			app  = new ExamApp();
-			this.numOfTest.add(app.getTypeOfTest());
-		}
-		else {
-			System.out.println("Error system instruction");
-		}
+	public void getGrade(Integer userId) {
+		test.getGrade(this.student, userId);
 	}
-	
-	public void deleteGrade() {
-		int index = 0;
-		System.out.println("Which index do you want to delete");
-		
-		for(AbstractExam app : numOfTest) {
-			System.out.println(index + ":" + app.getClass().toString());
-			index++;
-		}
-		System.out.println("Choice:");
-		int choice = scanner.nextInt();
-		System.out.println("Do you want to delete this?(Y/N)\nIndex = " 
-		+ this.numOfTest.get(choice));
-		String flag = scanner.nextLine();
-		if (flag.equals("Y")) {
-			this.numOfTest.remove(choice);
-			System.out.println("delete successfully");
-		}
-		else if(flag.equals("N")) {
-			System.out.println("delete false");
-		}
-		else {
-			System.out.println("error instruction");
-		}
-	}
-	
-	public void setGrade() {
-		int index = 0;
-		System.out.println("Which index do you want to set grades");
-		
-		for(AbstractExam app : numOfTest) {
-			System.out.println(index + ":" + app.getClass().toString());
-			index++;
-		}
-		System.out.println("Choice:");
-		int choice = scanner.nextInt();
-		System.out.println("Do you want to delete this?(Y/N)\nIndex = " 
-		+ this.numOfTest.get(choice));
-		String flag = scanner.nextLine();
-		if (flag.equals("Y")) {
-			System.out.println("Enter the scores of the every student");
-			ArrayList<Integer> scoreOfStudent = new ArrayList<Integer>();
-			for(int i = 0;i < this.student.size(); i++) {
-				int tmpScore = scanner.nextInt();
-				scoreOfStudent.add(tmpScore);
-			}
-			this.numOfTest.get(choice).setScore(this.student, scoreOfStudent);
-			System.out.println("update successfully");
-		}
-		else if(flag.equals("N")) {
-			System.out.println("update false");
-		}
-		else {
-			System.out.println("error instruction");
-		}
-	}
-	
-	
 }
