@@ -25,6 +25,9 @@ public class CourseList {
 		try {
 			fr = new FileReader("src/DataBase/Class.txt");
 			br = new BufferedReader(fr);
+			minScore = new ArrayList<Integer>();
+			finScore = new ArrayList<Integer>();
+			
 			try {
 				while(br.ready()) {
 					String Line = br.readLine();
@@ -37,8 +40,8 @@ public class CourseList {
 					fr2 = new FileReader("src/DataBase/" + split[1]+".txt");
 					br2 = new BufferedReader(fr2);
 					while(br2.ready()) {
-						minScore = new ArrayList<Integer>();
-						finScore = new ArrayList<Integer>();
+						minScore.clear();
+						finScore.clear();
 						String str = br2.readLine();
 						String[] slice = str.split(";");
 						for(int i = 1; i < slice.length; i++) {
