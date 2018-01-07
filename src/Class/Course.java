@@ -81,46 +81,21 @@ public class Course {
 	public void getAllGrade() {
 		this.showFormat.showGrades(this.numOfTest);
 	}
-	
-	public void getSingleGrade(Integer userId, Integer courseName) {
+
+//	Get this student all grades in this course
+	public void getSingleGrade(Integer userId, Integer courseNumber) {
 		ArrayList<String> id = new ArrayList<String>();
 		Map<String, String>  tmpScore = new HashMap<String, String>();
-		
-
-//		FileReader fr;
-//		int count = 0;
-//		try {
-//			fr = new FileReader("src/" + courseName.toString() + ".txt");
-//			BufferedReader br = new BufferedReader(fr);
-//			try {
-//				while(br.ready()) {
-//					if(count != 0) {
-//						String Line = br.readLine();
-//						String[] split = Line.split(";");
-//						id.add(split[0]);
-//						studentMidScore.put(split[0], split[1]);
-//						studentFinScore.put(split[0], split[2]);
-//					}
-//					count++;
-//				}
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//		}
-//		for(int i = 1; i < id.size(); i++) {
-//			if ( userId == Integer.parseInt(id.get(i))){
-//				System.out.println("Searching successfully...");
-//				System.out.println("[UserId]\t\t[Mid]\t\t[Fin]");
-//				System.out.println("--------+--------------");
-//				System.out.print(userId + "\t|\t" 
-//				+ studentMidScore.get(id.get(i)) 
-//				+"\t|\t"
-//				+ studentFinScore.get(id.get(i)));
-//				break;
-//			}
-//		}
+		String nid = userId.toString();
+		System.out.println("Your nid is " + nid);
+		System.out.println("[課程代碼]:" + courseNumber);
+		System.out.println("--------+--------------");
+		for(int i = 0; i < this.numOfTest.size(); i++) {
+			tmpScore = this.numOfTest.get(i).getStudentScore();
+			String selectedScope = tmpScore.get(nid);
+			System.out.println("[第" + (i+1) + "次考試]" + "\t|\t[" + selectedScope + "]");
+		}
+		System.out.println("-----------------------");
 	}
 	
 	@Override

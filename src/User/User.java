@@ -116,11 +116,3 @@ public class User {
 		return permission;
 	}
 }
-
-
-//MailServer obeseverA = new Admin();
-//MailServer obeseverB = new Scorer();
-//MailServer obeseverC = new Examinee();
-//CourseList.attach(obseverA);
-//CourseList.attach(obseverB);
-//CourseList.attach(obseverC);
