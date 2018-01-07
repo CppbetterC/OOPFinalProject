@@ -62,4 +62,9 @@ public class TOEIC extends TestManager {
 			System.out.println("Total Grade: " + sum);
 		}
 	}
+
+	@Override
+	public boolean setWeight() {
+		return false;
+	}
 }

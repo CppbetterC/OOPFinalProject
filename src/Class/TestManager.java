@@ -18,4 +18,6 @@ public abstract class TestManager {
 	public abstract void getGrade(ArrayList<Integer> students, Integer userId);
 	
 	public abstract boolean setGrade(ArrayList<Integer> students);
+	
+	public abstract boolean setWeight();
 }
