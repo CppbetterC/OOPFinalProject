@@ -168,6 +168,15 @@ public class CourseList {
 		return false;
 	}
 	
+	public static boolean setWeight(Integer number) {
+		for(Course c: allClass) {
+			if(c.getNumber() == number) {
+				return c.setWeight();
+			}
+		}
+		return false;
+	}
+	
 	public static boolean getGrade(Integer number) {
 		for(Course c: allClass) {
 			if(c.getNumber() == number) {

@@ -62,6 +62,30 @@ public class TestManager {
 		return false;
 	}
 	
+	public boolean setWeight() {
+		int index = 1;		
+		double sum = 0;
+		for(AbstractExam app : tests) {
+			System.out.println(index + ":" + app.name);
+			index++;
+		}
+		System.out.println("sum of weight must be 1");
+		System.out.println("Please Enter each test weight: ");
+		ArrayList<Double> w = new ArrayList<Double>();
+		for(AbstractExam app : tests)
+			System.out.println(index++ + ": " + app.name);
+		for(AbstractExam app : tests) {
+			System.out.println(app.name + ": ");
+			w.add(Double.valueOf(scanner.nextLine()));
+		}
+		for(Double d: w)	sum += d;
+		if(sum == 1.0) {
+			this.wieght = w;
+			return true;
+		}
+		return false;
+	}
+	
 	public boolean getGrade(ArrayList<Integer> students) {
 		int index = 1;		
 		for(AbstractExam app : tests) {

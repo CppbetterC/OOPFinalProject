@@ -86,6 +86,10 @@ public class Course {
 		return test.setGrade(this.student);
 	}
 	
+	public boolean setWeight() {
+		return test.setWeight();
+	}
+	
 	public boolean getGrade() {
 		return test.getGrade(this.student);
 	}
