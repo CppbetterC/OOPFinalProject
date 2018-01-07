@@ -53,7 +53,7 @@ public class Course {
 	}
 	public boolean addStudent(Integer student) {
 		for(Integer s: this.student)
-			if(s == student)	return false;
+			if(s.equals(student))	return false;
 		this.student.add(student);
 		test.addStudent();
 		return true;

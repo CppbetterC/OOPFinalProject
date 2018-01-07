@@ -79,10 +79,10 @@ public class CourseList {
 	public static ArrayList<Course> getCourse(Integer id){
 		ArrayList<Course> chosen = new ArrayList<Course>();
 		for(Course c: allClass) {
-			if(id == c.getTeacher())	chosen.add(c);
+			if(id.equals(c.getTeacher()))	chosen.add(c);
 			ArrayList<Integer> students = c.getStudents();
 			for(Integer student: students) {
-				if(student == id) chosen.add(c);
+				if(student.equals(id)) chosen.add(c);
 			}
 		}
 		return chosen;
@@ -105,13 +105,13 @@ public class CourseList {
 	
 	public static Integer getTeacher(Integer number) {
 		for(Course c: allClass) {
-			if(c.getNumber() == number) return c.getTeacher();
+			if(c.getNumber().equals(number)) return c.getTeacher();
 		}
 		return -1;
 	}
 	public static boolean setTeacher(Integer number, Integer teacher) {
 		for(Course c: allClass) {
-			if(c.getNumber() == number) {
+			if(c.getNumber().equals(number)) {
 				c.setTeacher(teacher);
 				return true;
 			}
@@ -120,13 +120,13 @@ public class CourseList {
 	}
 	public static ArrayList<Integer> getStudents(Integer number) {
 		for(Course c: allClass) {
-			if(c.getNumber() == number) return c.getStudents();
+			if(c.getNumber().equals(number)) return c.getStudents();
 		}
 		return null;
 	}
 	public static boolean addStudent(Integer number, Integer student) {
 		for(Course c: allClass) {
-			if(c.getNumber() == number) return c.addStudent(student);
+			if(c.getNumber().equals(number)) return c.addStudent(student);
 		}
 		return false;
 	}
@@ -164,7 +164,7 @@ public class CourseList {
 	
 	public static boolean addGrade(Integer number, String name) {
 		for(Course c: allClass) {
-			if(c.getNumber() == number) {
+			if(c.getNumber().equals(number)) {
 				c.addGrade(name);
 				return true;
 			}
@@ -174,7 +174,7 @@ public class CourseList {
 	
 	public static boolean deleteGrade(Integer number) {
 		for(Course c: allClass) {
-			if(c.getNumber() == number) {
+			if(c.getNumber().equals(number)) {
 				return c.deleteGrade();
 			}
 		}
@@ -183,7 +183,7 @@ public class CourseList {
 	
 	public static boolean setGrade(Integer number) {
 		for(Course c: allClass) {
-			if(c.getNumber() == number) {
+			if(c.getNumber().equals(number)) {
 				notifyObserverGetFinalScore("You had got a mail!");
 				return c.setGrade();
 			}
@@ -193,7 +193,7 @@ public class CourseList {
 	
 	public static boolean setWeight(Integer number) {
 		for(Course c: allClass) {
-			if(c.getNumber() == number) {
+			if(c.getNumber().equals(number)) {
 				return c.setWeight();
 			}
 		}
