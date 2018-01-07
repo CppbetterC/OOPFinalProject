@@ -53,6 +53,8 @@ public class User {
 		System.out.println("Welcome back, " + getName() + "\n");
 	}
 	
+	public User() {}
+	
 	protected void function() {
 		while (true) {
 			System.out.println("Your Classes:");

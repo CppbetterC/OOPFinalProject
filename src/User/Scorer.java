@@ -14,6 +14,11 @@ public class Scorer extends User implements MailServer {
 		function();
 	}
 	
+	public Scorer() {
+		super();
+	}
+	
+	
 	@Override
 	protected void rollAction(Integer choice) {
 		teach = new Teach(this.getId(), choice);

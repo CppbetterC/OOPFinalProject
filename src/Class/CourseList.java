@@ -33,7 +33,6 @@ public class CourseList {
 					for (int i = 3; i < split.length; i++) {
 						student.add(Integer.valueOf(split[i]));
 					}
-					
 
 					fr2 = new FileReader("src/DataBase/" + split[1]+".txt");
 					br2 = new BufferedReader(fr2);
@@ -182,6 +181,7 @@ public class CourseList {
 	public static boolean setGrade(Integer number) {
 		for(Course c: allClass) {
 			if(c.getNumber() == number) {
+				notifyObserverGetFinalScore("You had got a mail!");
 				return c.setGrade();
 			}
 		}

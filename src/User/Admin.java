@@ -21,6 +21,10 @@ public class Admin extends User implements MailServer {
 		function();	
 	}
 	
+	public Admin() {
+		super();
+	}
+	
 	@Override
 	public void function() {
 		while (true) {

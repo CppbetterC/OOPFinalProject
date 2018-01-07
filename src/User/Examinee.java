@@ -14,6 +14,11 @@ public class Examinee extends User implements MailServer {
 		function();
 	}
 	
+	
+	public Examinee() {
+		super();
+	}
+	
 	@Override
 	protected void rollAction(Integer choice) {
 		learn = new Learn(this.getId(), choice);
