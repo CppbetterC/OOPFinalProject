@@ -1,6 +1,7 @@
 package User;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -29,6 +30,7 @@ public class Main {
 			loginPassword = scanner.nextLine();		
 			readAccount();		// prepare the account list for login
 			System.out.println(Verify(loginAccount, loginPassword));	// get the permission of this account
+			//deleteAllFile(new File("src/DataBase"));
 			restoreClass();
 			restoreUser();
 			//restoreCourse();
@@ -234,5 +236,19 @@ public class Main {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	private static void deleteAllFile(File path) {
+		if (!path.exists()) {
+            return;
+        }
+        if (path.isFile()) {
+            path.delete();
+            return;
+        }
+        File[] files = path.listFiles();
+        for (int i = 0; i < files.length; i++) {
+        	deleteAllFile(files[i]);
+        }
+        path.delete();
 	}
 }
