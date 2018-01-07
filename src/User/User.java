@@ -62,14 +62,14 @@ public class User {
 			}
 			System.out.println("\n\n*****************\n1. Change Password\n" + "2. Search Class\n" + "3. Logout\n*****************");
 			System.out.println("Choose a Service or Enter a class number directely: ");
-			Integer choice = scanner.nextInt();
+			Integer choice = Integer.valueOf(scanner.nextLine());
 			System.out.flush();
 			switch (choice) {
 				case 1: {
-					scanner.nextLine();
 					System.out.println("Please Enter new Password: ");
-					if(this.setPassword(scanner.nextLine()))
+					if(Main.setPassword(this.id, scanner.nextLine())){
 						System.out.println("Password has been Changed\n");
+					}
 					else
 						System.out.println("Password Change failed\n");
 					break;
@@ -107,9 +107,8 @@ public class User {
 		return password;
 	}
 
-	public boolean setPassword(String password) {
+	public void setPassword(String password) {
 		this.password = password;
-		return true;
 	}
 
 	public String getPermission() {
