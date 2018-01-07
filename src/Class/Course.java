@@ -24,7 +24,7 @@ public class Course {
 	public Course(String name){
 		this.number = count;
 		this.name = name;
-		test = new TestManager();
+		test = new Manager1();
 		count++;
 	}
 	public Course(Integer number, String name, Integer teacher, ArrayList<Integer> student){
@@ -32,7 +32,7 @@ public class Course {
 		this.name = name;
 		this.teacher = teacher;
 		this.student = student;
-		test = new TestManager();
+		test = new Manager1();
 		count = this.number + 1;
 	}
 	
