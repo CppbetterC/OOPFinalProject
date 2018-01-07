@@ -38,7 +38,7 @@ public class Main {
 			deleteAllFile(new File("src/DataBase"));
 			restoreClass();
 			restoreUser();
-			restoreCourse();
+			//restoreCourse();
 		}
 	}
 	

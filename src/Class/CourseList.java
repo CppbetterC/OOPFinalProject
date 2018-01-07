@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import User.MailServer;
+import User.Main;
 import User.User;
 
 public class CourseList {
@@ -85,16 +86,19 @@ public class CourseList {
 		return chosen;
 	}
 	
-	public static Course getCourse(String search){
+	public static ArrayList<Course> getCourse(String search){
+		ArrayList<Course> result = new ArrayList<Course>();
 		for(Course c: allClass) {
-			if(search.equals(String.valueOf(c.getNumber())))	return c;
-			if(search.equals(c.getTeacher().toString()))	return c;
-			ArrayList<Integer> students = c.getStudents();
-			for(Integer student: students) {
-				if(search.equals(student.toString())) return c;
+			if(search.equals(String.valueOf(c.getNumber())))	result.add(c);
+			else if(search.equals(Main.getUserName(c.getTeacher())))	result.add(c);
+			else {
+				ArrayList<Integer> students = c.getStudents();
+				for(Integer student: students) {
+					if(search.equals(Main.getUserName(student))) result.add(c);
+				}
 			}
 		}
-		return null;
+		return result;
 	}
 	
 	public static Integer getTeacher(Integer number) {
