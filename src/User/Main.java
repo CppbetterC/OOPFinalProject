@@ -31,7 +31,7 @@ public class Main {
 			System.out.println(Verify(loginAccount, loginPassword));	// get the permission of this account
 			restoreClass();
 			restoreUser();
-			restoreCourse();
+			//restoreCourse();
 		}
 	}
 	
@@ -180,10 +180,14 @@ public class Main {
 				ArrayList<Integer> courseStudent = CourseList.getAllClassStudent(i);
 				fw = new FileWriter("src/DataBase/"+courseName+".txt",true);
 				BufferedWriter br = new BufferedWriter(fw);
-				br.write(courseTeacher + ",");
+				br.write(courseTeacher + ";");
 				for (int j = 0; j < test.gettestlen(); j++) {
 					String textName = test.getName(j);
-					br.write(textName + ";");
+					br.write(textName);
+					if (j == test.gettestlen()-1) {
+						break;
+					}
+					br.write(";");
 				}
 				br.newLine();
 				for (int k = 0; k< courseStudent.size(); k++) {
