@@ -11,8 +11,10 @@ public abstract class AbstractExam {
 	
 	private Scanner scanner = new Scanner(System.in);
 	
-	public AbstractExam(String name) {
+	public AbstractExam(String name, Integer student) {
 		this.name = name;
+		for(int i = 0; i < student; i++)
+			scores.add(0);
 	}
 	
 	public void setGrade(ArrayList<Integer> scores) {

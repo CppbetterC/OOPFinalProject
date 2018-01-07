@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Quiz extends AbstractExam {
-	public Quiz(String name) {
-		super(name);
+	public Quiz(String name, Integer studentCount) {
+		super(name, studentCount);
 	}
 }

@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import User.Main;
 
 public class TOEIC extends TestManager {
-	public TOEIC() {
+	public TOEIC(Integer studentCount) {
 		super();
 		AbstractExamApp app = new ExamApp();
-		this.tests.add(app.createTest("Total Grade"));
+		this.tests.add(app.createTest("Total Grade", studentCount));
 	}
 
 	@Override
-	public void addGrade(String name) {}
+	public void addGrade(String name, Integer studentCount) {}
 
 	@Override
 	public boolean deleteGrade() {

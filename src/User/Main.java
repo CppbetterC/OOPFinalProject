@@ -189,7 +189,7 @@ public class Main {
 				for (int k = 0; k< courseStudent.size(); k++) {
 					br.write(courseStudent.get(k) + ";");
 					for(int l = 0; l < test.gettestlen(); l++) {
-						Integer textGrade = test.getGrade(l, courseStudent.get(k));
+						Integer textGrade = test.getGrade(l, courseStudent.get(k), courseStudent);
 						System.out.println(textGrade);
 						br.write(textGrade + ";");
 					}
