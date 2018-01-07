@@ -1,9 +1,11 @@
 package Class;
 
+import java.util.ArrayList;
+
 public class ExamApp extends AbstractExamApp{
 	 public ExamApp() {}
 
-	 public AbstractExam createTest(String name){
-		 return new Exam(name);
+	 public AbstractExam createTest(String name, Integer studentCount){
+		 return new Exam(name, studentCount);
 	 }
 }

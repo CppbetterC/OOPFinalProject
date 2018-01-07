@@ -4,5 +4,5 @@ public abstract class AbstractExamApp {
 	AbstractExam t;
 
 	 public AbstractExamApp() {}
-	 abstract AbstractExam createTest(String name);
+	 abstract AbstractExam createTest(String name, Integer studentCount);
 }

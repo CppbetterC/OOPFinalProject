@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 import Class.Course;
 import Class.CourseList;
+import Class.TestManager;
 
 public class Main {
 	private static ArrayList<User> userList = new ArrayList<User>();
@@ -30,6 +31,7 @@ public class Main {
 			System.out.println(Verify(loginAccount, loginPassword));	// get the permission of this account
 			restoreClass();
 			restoreUser();
+			restoreCourse();
 		}
 	}
 	
@@ -172,14 +174,27 @@ public class Main {
 		ArrayList<Course> course = CourseList.getAllClass();
 		try {
 			for (int i = 0; i < course.size(); i++) {
-				Integer courseId = CourseList.getAllClassId(i);
+				TestManager test = CourseList.getAllClassGrade(i);
 				String courseName = CourseList.getAllClassName(i);
 				Integer courseTeacher = CourseList.getAllClassTeacher(i);
 				ArrayList<Integer> courseStudent = CourseList.getAllClassStudent(i);
 				fw = new FileWriter("src/"+courseName+".txt",true);
 				BufferedWriter br = new BufferedWriter(fw);
-				br.write(courseId + ";");
+				br.write(courseTeacher + ",");
+				for (int j = 0; j < test.gettestlen(); j++) {
+					String textName = test.getName(j);
+					br.write(textName + ";");
+				}
 				br.newLine();
+				for (int k = 0; k< courseStudent.size(); k++) {
+					br.write(courseStudent.get(k) + ";");
+					for(int l = 0; l < test.gettestlen(); l++) {
+						Integer textGrade = test.getGrade(l, courseStudent.get(k), courseStudent);
+						System.out.println(textGrade);
+						br.write(textGrade + ";");
+					}
+					br.newLine();
+				}
 				br.flush();
 				fw.close();
 			}

@@ -24,7 +24,7 @@ public class Course {
 	public Course(String name){
 		this.number = count;
 		this.name = name;
-		test = new FengChiaUniversity();
+		test = new FengChiaUniversity(student.size());
 		count++;
 	}
 	public Course(Integer number, String name, Integer teacher, ArrayList<Integer> student){
@@ -32,7 +32,7 @@ public class Course {
 		this.name = name;
 		this.teacher = teacher;
 		this.student = student;
-		test = new FengChiaUniversity();
+		test = new FengChiaUniversity(student.size());
 		count = this.number + 1;
 	}
 	
@@ -75,7 +75,7 @@ public class Course {
 	}	
 	
 	public void addGrade(String name) {
-		test.addGrade(name);
+		test.addGrade(name, student.size());
 	}
 	
 	public boolean deleteGrade() {
@@ -96,5 +96,8 @@ public class Course {
 
 	public void getGrade(Integer userId) {
 		test.getGrade(this.student, userId);
+	}
+	public TestManager getTestManager() {
+		return test;
 	}
 }
