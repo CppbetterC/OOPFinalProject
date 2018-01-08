@@ -54,7 +54,7 @@ public class TOEIC extends TestManager {
 		Double sum = 0.0;
 		for(AbstractExam test: tests) {
 			for(int i = 0; i < students.size(); i++) {
-				if(students.get(i) == userId){
+				if(students.get(i).equals(userId)){
 					System.out.println(test.name + ": " + test.scores.get(i));
 					sum += test.scores.get(i);
 				}

@@ -41,7 +41,7 @@ public abstract class TestManager {
 	public Integer getGrade(int index,int studentId, ArrayList<Integer> students) {
 		Integer score = 0;
 		for(int i = 0; i < students.size(); i++) {
-			if(students.get(i) == studentId){
+			if(students.get(i).equals(studentId)){
 				score = tests.get(index).scores.get(i);
 				break;
 			}

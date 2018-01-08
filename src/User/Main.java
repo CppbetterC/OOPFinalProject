@@ -96,7 +96,7 @@ public class Main {
 	
 	public static String getUserName(Integer id) {
 		for(User user: userList) {
-			if(user.getId() == id) {
+			if(user.getId().equals(id)) {
 				return user.getName();
 			}
 		}
@@ -156,7 +156,7 @@ public class Main {
 				br.write(courseTeacher + ";");
 				for (Integer j :courseStudent){
 					br.write(String.valueOf(j));
-					if (j == courseStudent.get(courseStudent.size()-1)) {
+					if (j.equals(courseStudent.get(courseStudent.size()-1))) {
 						break;
 					}
 					br.write(";");
