@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Class.AbstractExam;
 import Class.Course;
 import Class.CourseList;
 import Class.TestManager;
@@ -20,6 +21,17 @@ public class Main {
 	
 	public static void main(String[] args) {
 		CourseList list = new CourseList();
+		/*
+		for(Course c: CourseList.allClass) {
+			System.out.println("ccc"+c.getName());
+			for(AbstractExam exam: c.getTestManager().tests) {
+				System.out.println(exam.name);
+				for(Integer score: exam.scores) {
+					System.out.println(score);
+				}
+			}
+		}
+		*/
 		String loginAccount;
 		String loginPassword;
 		System.out.println("Welcome to use the System");
@@ -30,10 +42,6 @@ public class Main {
 			loginPassword = scanner.nextLine();		
 			readAccount();		// prepare the account list for login
 			System.out.println(Verify(loginAccount, loginPassword));	// get the permission of this account
-			deleteAllFile(new File("src/DataBase"));
-			restoreClass();
-			restoreUser();
-			restoreCourse();
 		}
 	}
 	
@@ -85,6 +93,10 @@ public class Main {
 					else {
 						return "Login Failed\n";
 					}
+					deleteAllFile(new File("src/DataBase"));
+					restoreClass();
+					restoreUser();
+					restoreCourse();
 					return "You have logged out\n";
 				}
 				else
@@ -199,7 +211,7 @@ public class Main {
 					br.write(courseStudent.get(k) + ";");
 					for(int l = 0; l < test.gettestlen(); l++) {
 						Integer textGrade = test.getGrade(l, courseStudent.get(k), courseStudent);
-						br.write(textGrade);
+						br.write(textGrade.toString());
 						if (l == test.gettestlen()-1) {
 							break;
 						}

@@ -20,39 +20,37 @@ public class Teach {
 		
 		if(ischosen) {
 			while(true) {
-				System.out.println(CourseList.getCourse(courseNumber));
-				System.out.println("1. Display tests\n2. Add Tests\n3. Delete Tests\n4. Rejister grades\n5. Set grades\n6. Back");
-				switch(scanner.nextInt()) {
+				System.out.println("1. Display tests\n2. Add Tests\n3. Delete Tests\n4. Rejister grades\n5. Set weight\n6. Back");
+				switch(Integer.valueOf(scanner.nextLine())) {
 					case 1:
-						if(CourseList.getGrade(courseNumber))
-							System.out.println("Weight set Successful");
-						else
-							System.out.println("Weight set failed");
+						if(!CourseList.getGrade(courseNumber))
+							System.out.println("No test");
 						break;
 					case 2:
 						System.out.println("Class name: ");
 						if(CourseList.addGrade(courseNumber, scanner.nextLine()))
-							System.out.println("Weight set Successful");
+							System.out.println("Test add Successful");
 						else
-							System.out.println("Weight set failed");
+							System.out.println("Test add failed");
 						break;
 					case 3:
 						if(CourseList.deleteGrade(courseNumber))
-							System.out.println("Weight set Successful");
+							System.out.println("Test delete Successful");
 						else
-							System.out.println("Weight set failed");;
+							System.out.println("Test delete failed");;
 						break;
 					case 4:
 						if(CourseList.setGrade(courseNumber))
-							System.out.println("Weight set Successful");
+							System.out.println("Grades set Successful");
 						else
-							System.out.println("Weight set failed");;
+							System.out.println("Grades set failed");;
 						break;
 					case 5:
 						if(CourseList.setWeight(courseNumber))
 							System.out.println("Weight set Successful");
 						else
 							System.out.println("Weight set failed");
+						break;
 					case 6:
 						return;
 				}

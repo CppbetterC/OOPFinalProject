@@ -40,7 +40,7 @@ public class FengChiaUniversity extends TestManager {
 	}
 	
 	public boolean setGrade(ArrayList<Integer> students) {
-		int index = 1;
+		int index = 0;
 		for(AbstractExam app : tests) {
 			System.out.println(index + ":" + app.name);
 			index++;
@@ -55,20 +55,20 @@ public class FengChiaUniversity extends TestManager {
 				int tmpScore = Integer.valueOf(scanner.nextLine());
 				scoreOfStudent.add(tmpScore);
 			}
-			this.tests.get(choice-1).setGrade(scoreOfStudent);
+			this.tests.get(choice).setGrade(scoreOfStudent);
 			return true;
 		}
 		return false;
 	}
 
 	public boolean getGrade(ArrayList<Integer> students) {
-		int index = 1;		
+		int index = 0;		
 		for(AbstractExam app : tests) {
 			System.out.println(index++ + ":" + app.name);
 		}
 		System.out.println("Which Test do you want to see: ");
 		int choice = Integer.valueOf(scanner.nextLine());
-		if (choice > 0 && choice < tests.size()) {
+		if (choice > -1 && choice < tests.size()) {
 			int i = 0;
 			for(Integer student: students) {
 				System.out.println(Main.getUserName(student) + ": " + tests.get(choice).scores.get(i++));
@@ -87,8 +87,8 @@ public class FengChiaUniversity extends TestManager {
 					sum += test.scores.get(i) * wieght.get(i);
 				}
 			}
-			System.out.println("Total Grade: " + sum);
 		}
+		System.out.println("Total Grade: " + sum);
 	}
 	
 	public boolean setWeight() {
@@ -101,8 +101,6 @@ public class FengChiaUniversity extends TestManager {
 		System.out.println("sum of weight must be 1");
 		System.out.println("Please Enter each test weight: ");
 		ArrayList<Double> w = new ArrayList<Double>();
-		for(AbstractExam app : tests)
-			System.out.println(index++ + ": " + app.name);
 		for(AbstractExam app : tests) {
 			System.out.println(app.name + ": ");
 			w.add(Double.valueOf(scanner.nextLine()));

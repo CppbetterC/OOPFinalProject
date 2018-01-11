@@ -16,7 +16,7 @@ public class CourseList {
 	private static boolean finalScoreChanged = false;
 	private static ArrayList<MailServer> observers = new ArrayList<MailServer>();
 	private static Vector obs = new Vector();
-	public static ArrayList<Course> allClass = new ArrayList<Course>();
+	private static ArrayList<Course> allClass = new ArrayList<Course>();
 	
 	public CourseList() {
 		ArrayList<Integer> student, minScore, finScore;
@@ -25,9 +25,7 @@ public class CourseList {
 		try {
 			fr = new FileReader("src/DataBase/Class.txt");
 			br = new BufferedReader(fr);
-			minScore = new ArrayList<Integer>();
-			finScore = new ArrayList<Integer>();
-			
+
 			try {
 				while(br.ready()) {
 					String Line = br.readLine();
@@ -39,18 +37,25 @@ public class CourseList {
 
 					fr2 = new FileReader("src/DataBase/" + split[1]+".txt");
 					br2 = new BufferedReader(fr2);
+					boolean count = true;
+					minScore = new ArrayList<Integer>();
+					finScore = new ArrayList<Integer>();
 					while(br2.ready()) {
-						minScore.clear();
-						finScore.clear();
-						String str = br2.readLine();
-						String[] slice = str.split(";");
-						for(int i = 1; i < slice.length; i++) {
-							minScore.add(Integer.valueOf(1));
-							finScore.add(Integer.valueOf(2));
+
+						String str = "";
+						str = br2.readLine();
+						if(count) {
+							count = false;
+							continue;
 						}
+						String[] slice = str.split(";");
+						minScore.add(Integer.valueOf(slice[1]));
+						finScore.add(Integer.valueOf(slice[2]));
+
 					}
 					allClass.add(new Course(Integer.valueOf(split[0]), split[1], Integer.valueOf(split[2]),
-								student, minScore, finScore));
+							student, minScore, finScore));
+
 				}
 				fr.close();
 			} catch (IOException e) {
@@ -79,10 +84,13 @@ public class CourseList {
 	public static ArrayList<Course> getCourse(Integer id){
 		ArrayList<Course> chosen = new ArrayList<Course>();
 		for(Course c: allClass) {
-			if(id.equals(c.getTeacher()))	chosen.add(c);
-			ArrayList<Integer> students = c.getStudents();
-			for(Integer student: students) {
-				if(student.equals(id)) chosen.add(c);
+			if(id.equals(c.getNumber()))	chosen.add(c);
+			else if(id.equals(c.getTeacher()))	chosen.add(c);
+			else {
+				ArrayList<Integer> students = c.getStudents();
+				for(Integer student: students) {
+					if(student.equals(id)) chosen.add(c);
+				}
 			}
 		}
 		return chosen;

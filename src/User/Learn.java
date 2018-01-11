@@ -24,14 +24,14 @@ public class Learn {
 				System.out.println("Choose a serivce: ");
 				switch(scanner.nextInt()) {
 					case 1:
-						CourseList.getGrade(userId, courseNumber);
+						if(!CourseList.getGrade(courseNumber, userId))
+							System.out.println("No found");
 						break;
 					case 2:
 						System.out.println("Are you sure to drop this class?(Y/N) ");
 						if(scanner.nextLine().equals("Y") || scanner.nextLine().equals("y"))
 							CourseList.deleteStudent(courseNumber, userId);
 						System.out.println("You have droped " + CourseList.getName(courseNumber));
-						break;
 					case 3:
 						return;
 				}
