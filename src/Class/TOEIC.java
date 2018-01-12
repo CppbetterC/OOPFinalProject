@@ -72,7 +72,7 @@ public class TOEIC extends TestManager {
 		}
 		System.out.println("Which Test do you want to see: ");
 		int choice = Integer.valueOf(scanner.nextLine());
-		if (choice > 0 && choice < tests.size()) {
+		if (choice >= 0 && choice < tests.size()) {
 			System.out.println("Enter the scores of the every student");
 			int i = 0;
 			for(Integer student: students) {
@@ -80,6 +80,7 @@ public class TOEIC extends TestManager {
 			}
 			return true;
 		}
+		System.out.println(tests.size());
 		return false;
 	}
 

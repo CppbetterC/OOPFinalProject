@@ -121,6 +121,7 @@ public class Course {
 	}
 	
 	public boolean getGrade() {
+		System.out.println("Course");
 		return test.getGrade(this.student);
 	}
 
