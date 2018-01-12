@@ -67,6 +67,7 @@ public class Course {
 	}
 	
 	public Integer getTeacher() {
+		if(teacher == null) return Integer.valueOf(-1);
 		return teacher;
 	}
 	public void setTeacher(Integer teacher) {
