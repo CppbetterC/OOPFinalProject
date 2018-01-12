@@ -41,12 +41,16 @@ public class Learn {
 		else {
 			System.out.println("1. Add this Class\n2. Back");
 			System.out.println("Choose a serivce: ");
-			switch(scanner.nextInt()) {
+			switch(Integer.valueOf(scanner.nextLine())) {
 				case 1:
 					System.out.println("Are you sure to choose this class?(Y/N) ");
-					if(scanner.nextLine().equals("Y") || scanner.nextLine().equals("y"))
+					String choice = scanner.nextLine();
+					if(choice.equals("Y") || choice.equals("y")) {
 						CourseList.addStudent(courseNumber, userId);
-					System.out.println("You have added " + CourseList.getName(courseNumber));
+						System.out.println("You have added " + CourseList.getName(courseNumber));
+					}else {
+						System.out.println("You haven't added " + CourseList.getName(courseNumber));
+					}
 					break;
 				case 2:
 					return;
