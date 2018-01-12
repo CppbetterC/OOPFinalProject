@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import User.Main;
 
 public class FengChiaUniversity extends TestManager {
-	protected ArrayList<Double> wieght = new ArrayList<Double>();
+	private ArrayList<Double> wieght = new ArrayList<Double>();
 
 
 	public FengChiaUniversity(Integer studentCount) {
@@ -25,7 +25,7 @@ public class FengChiaUniversity extends TestManager {
 		ArrayList<Integer> scoretest2;
 		
 
-		for(int j = 0 ; j < data.get(j).length; j++) {
+		for(int j = 0 ; j < data.get(0).length; j++) {
 			scoretest = new ArrayList<String>();
 			scoretest2 = new ArrayList<Integer>();
 			if(j == 0) {
@@ -47,7 +47,7 @@ public class FengChiaUniversity extends TestManager {
 			System.out.println(scoretest2);
 			System.out.println();
 			
-			this.tests.get(j).setGrade(scoretest2);
+			this.tests.get(j-1).setGrade(scoretest2);
 		}
 
 		

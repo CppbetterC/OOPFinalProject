@@ -45,7 +45,7 @@ public class Learn {
 				case 1:
 					System.out.println("Are you sure to choose this class?(Y/N) ");
 					if(scanner.nextLine().equals("Y") || scanner.nextLine().equals("y"))
-						CourseList.addStudent(courseNumber, userId);
+						System.out.println(CourseList.addStudent(courseNumber, userId));
 					System.out.println("You have added " + CourseList.getName(courseNumber));
 					break;
 				case 2:
