@@ -49,10 +49,6 @@ public class FengChiaUniversity extends TestManager {
 				scoretest2.add(Integer.parseInt((scoretest.get(k))));
 			}
 			
-			System.out.println(scoretest);
-			System.out.println(scoretest2);
-			System.out.println();
-			
 			this.tests.get(j-1).setGrade(scoretest2);
 		}
 	}

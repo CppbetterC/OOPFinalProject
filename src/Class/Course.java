@@ -27,7 +27,7 @@ public class Course {
 	public Course(String name){
 		this.number = count;
 		this.name = name;
-		test = new TOEIC(student.size());
+		test = new FengChiaUniversity(student.size());
 		count++;
 	}
 	
@@ -58,7 +58,7 @@ public class Course {
 			e.printStackTrace();
 		}
 		
-		test = new TOEIC(student.size(), dataOfTest);
+		test = new FengChiaUniversity(student.size(), dataOfTest);
 		count = this.number + 1;
 	}
 	

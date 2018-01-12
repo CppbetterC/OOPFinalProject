@@ -17,7 +17,7 @@ public class TOEIC extends TestManager {
 		ArrayList<String> scoretest;
 		ArrayList<Integer> scoretest2;
 	
-		for(int j = 0 ; j < data.get(0).length; j++) {
+		for(int j = 0 ; j < 1 ; j++) {
 			scoretest = new ArrayList<String>();
 			scoretest2 = new ArrayList<Integer>();
 			
