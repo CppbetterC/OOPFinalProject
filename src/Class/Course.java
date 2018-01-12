@@ -20,6 +20,9 @@ public class Course {
 	private ArrayList<Integer> student = new ArrayList<Integer>();
 	private TestManager test;
 	Scanner scanner = new Scanner(System.in);
+	FileReader fr;
+	BufferedReader br;
+	public ArrayList<String[]> dataOfTest = new ArrayList<String[]>();
 	
 	public Course(String name){
 		this.number = count;
@@ -27,14 +30,35 @@ public class Course {
 		test = new FengChiaUniversity(student.size());
 		count++;
 	}
-	public Course(Integer number, String name, Integer teacher,
-			ArrayList<Integer> student, ArrayList<Integer> studentMinScore, ArrayList<Integer> studentFinScore){
+	
+	public Course(Integer number, String name, Integer teacher, ArrayList<Integer> student){
 		this.number = number;
 		this.name = name;
 		this.teacher = teacher;
 		this.student = student;
-		test = new FengChiaUniversity(student.size());
-		test.setGrade(this.student, studentMinScore, studentFinScore);
+		
+		try {
+			fr = new FileReader("src/DataBase/" + this.number +".txt");
+			br = new BufferedReader(fr);
+			AbstractExam app;
+			String str = "";
+			String slice[];
+			int cnt = 0, numOfTests = 0;
+			while(br.ready()) {
+				str = br.readLine();
+				slice = str.split(";");
+				numOfTests = slice.length;
+				dataOfTest.add(slice);
+					
+			}
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		test = new FengChiaUniversity(student.size(), dataOfTest);
 		count = this.number + 1;
 	}
 	

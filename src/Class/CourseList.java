@@ -8,60 +8,40 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import User.MailServer;
 import User.Main;
 import User.User;
 
 public class CourseList {
 	private static boolean finalScoreChanged = false;
-	private static ArrayList<MailServer> observers = new ArrayList<MailServer>();
-	private static Vector obs = new Vector();
 	private static ArrayList<Course> allClass = new ArrayList<Course>();
 	
 	public CourseList() {
 		ArrayList<Integer> student, minScore, finScore;
-		FileReader fr, fr2;
-		BufferedReader br, br2;
+		FileReader fr;
+		BufferedReader br;
 		try {
 			fr = new FileReader("src/DataBase/Class.txt");
 			br = new BufferedReader(fr);
 
-			try {
-				while(br.ready()) {
-					String Line = br.readLine();
-					String[] split = Line.split(";");
-					student = new ArrayList<Integer>();
-					for (int i = 3; i < split.length; i++) {
-						student.add(Integer.valueOf(split[i]));
-					}
-
-					fr2 = new FileReader("src/DataBase/" + split[1]+".txt");
-					br2 = new BufferedReader(fr2);
-					boolean count = true;
-					minScore = new ArrayList<Integer>();
-					finScore = new ArrayList<Integer>();
-					while(br2.ready()) {
-
-						String str = "";
-						str = br2.readLine();
-						if(count) {
-							count = false;
-							continue;
-						}
-						String[] slice = str.split(";");
-						minScore.add(Integer.valueOf(slice[1]));
-						finScore.add(Integer.valueOf(slice[2]));
-
-					}
-					allClass.add(new Course(Integer.valueOf(split[0]), split[1], Integer.valueOf(split[2]),
-							student, minScore, finScore));
-
+			while(br.ready()) {
+				String Line = br.readLine();
+				String[] split = Line.split(";");
+				student = new ArrayList<Integer>();
+				for (int i = 3; i < split.length; i++) {
+					student.add(Integer.valueOf(split[i]));
 				}
-				fr.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			
+				allClass.add(new Course(Integer.valueOf(split[0]), split[1], Integer.valueOf(split[2]),
+						student));
+		}
+			
+			fr.close();
+			
 		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -158,17 +138,6 @@ public class CourseList {
 			System.out.println(c);
 		}
 	}
-
-	public static void attachObserver(MailServer newObserver) {
-		observers.add(newObserver);
-	}
-
-//	Notify all observer, sent messages to them;
-	public static void notifyObserverGetFinalScore(String mailContext) {
-		for(MailServer obs : observers) {
-			obs.update(mailContext);
-		}
-	}
 	
 	public static boolean addGrade(Integer number, String name) {
 		for(Course c: allClass) {
@@ -192,7 +161,6 @@ public class CourseList {
 	public static boolean setGrade(Integer number) {
 		for(Course c: allClass) {
 			if(c.getNumber().equals(number)) {
-				notifyObserverGetFinalScore("You had got a mail!");
 				return c.setGrade();
 			}
 		}

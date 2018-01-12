@@ -231,6 +231,7 @@ public class Main {
 			e.printStackTrace();
 		}
 	}
+	
 	private static void restoreUser() {
 //		pass data to write data to file
 		FileWriter fw;
@@ -260,6 +261,7 @@ public class Main {
 			e.printStackTrace();
 		}
 	}
+	
 	private static void deleteAllFile(File path) {
 		if (!path.exists()) {
             return;
