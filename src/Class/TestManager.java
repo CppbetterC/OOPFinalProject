@@ -53,13 +53,17 @@ public abstract class TestManager {
 		return tests.size();
 	}
 	
-	public boolean setGrade(ArrayList<Integer> students, 
-			ArrayList<Integer> MinScore, ArrayList<Integer> FinScore) {
-		if (students.size()>0) {
-			this.tests.get(0).setGrade(MinScore);
-			this.tests.get(1).setGrade(FinScore);
-			return true;
-		}
-		return false;
-	}
+//	public boolean setGrade(ArrayList<Integer> students, 
+//			ArrayList<String[]> dataOfTest) {
+//	
+//		for(int i = 0; i < dataOfTest.size(); i++) {
+//
+//			this.tests.get(0).setGrade(MinScore);
+//			this.tests.get(1).setGrade(FinScore);
+//
+//			return true;
+//		}
+//
+//		return false;
+//	}
 }

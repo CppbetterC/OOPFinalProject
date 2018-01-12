@@ -7,7 +7,17 @@ import User.Main;
 public class FengChiaUniversity extends TestManager {
 	protected ArrayList<Double> wieght = new ArrayList<Double>();
 
+
 	public FengChiaUniversity(Integer studentCount) {
+		super();
+		AbstractExamApp app = new ExamApp();
+		this.tests.add(app.createTest("Mid-Term", studentCount));
+		this.wieght.add(0.5);
+		this.tests.add(app.createTest("Final", studentCount));
+		this.wieght.add(0.5);
+	}
+	
+	public FengChiaUniversity(Integer studentCount, ArrayList<String[]> data) {
 		super();
 		AbstractExamApp app = new ExamApp();
 		this.tests.add(app.createTest("Mid-Term", studentCount));
