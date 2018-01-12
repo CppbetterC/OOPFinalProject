@@ -22,12 +22,7 @@ public class FengChiaUniversity extends TestManager {
 		int cnt = data.size() - 1;
 		ArrayList<String> scoretest;
 		ArrayList<Integer> scoretest2;
-<<<<<<< HEAD
-		
 
-=======
-	
->>>>>>> 55476890442f1d87f4b9f9f382ec21af91196491
 		for(int j = 0 ; j < data.get(0).length; j++) {
 			scoretest = new ArrayList<String>();
 			scoretest2 = new ArrayList<Integer>();
@@ -53,14 +48,11 @@ public class FengChiaUniversity extends TestManager {
 			for(int k = 0; k < scoretest.size(); k++) {
 				scoretest2.add(Integer.parseInt((scoretest.get(k))));
 			}
-<<<<<<< HEAD
 			
 			System.out.println(scoretest);
 			System.out.println(scoretest2);
 			System.out.println();
 			
-=======
->>>>>>> 55476890442f1d87f4b9f9f382ec21af91196491
 			this.tests.get(j-1).setGrade(scoretest2);
 		}
 	}
