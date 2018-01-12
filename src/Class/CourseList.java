@@ -6,17 +6,15 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Vector;
+
 
 import User.Main;
-import User.User;
 
 public class CourseList {
-	private static boolean finalScoreChanged = false;
 	private static ArrayList<Course> allClass = new ArrayList<Course>();
 	
 	public CourseList() {
-		ArrayList<Integer> student, minScore, finScore;
+		ArrayList<Integer> student;
 		FileReader fr;
 		BufferedReader br;
 		try {

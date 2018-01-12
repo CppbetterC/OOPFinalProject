@@ -1,6 +1,5 @@
 package Class;
 
-import java.util.ArrayList;
 
 public class ExamApp extends AbstractExamApp{
 	 public ExamApp() {}

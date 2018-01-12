@@ -1,10 +1,5 @@
 package User;
 
-import java.util.ArrayList;
-import java.util.Objects;
-
-import Class.Course;
-import Class.CourseList;
 import User.User;
 
 public class Scorer extends User {

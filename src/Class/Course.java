@@ -5,12 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 import User.Main;
-import User.User;
 
 public class Course {
 	private static Integer count = 1001;
@@ -40,10 +37,9 @@ public class Course {
 		try {
 			fr = new FileReader("src/DataBase/" + this.number +".txt");
 			br = new BufferedReader(fr);
-			AbstractExam app;
 			String str = "";
 			String slice[];
-			int cnt = 0, numOfTests = 0;
+			int numOfTests;
 			while(br.ready()) {
 				str = br.readLine();
 				slice = str.split(";");

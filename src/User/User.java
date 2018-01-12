@@ -1,12 +1,7 @@
 package User;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 import Class.Course;
@@ -93,7 +88,6 @@ public class User {
 		}
 	}
 	
-	//Let different Roll to do different Action
 	protected void rollAction(Integer choice) {}
 
 	public Integer getId() {

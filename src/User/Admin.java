@@ -1,16 +1,5 @@
 package User;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Array;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Scanner;
-
-import Class.Course;
 import Class.CourseList;
 import User.User;
 

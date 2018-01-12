@@ -1,10 +1,8 @@
 package Class;
 
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.Scanner;
 
-import User.Main;
 
 public abstract class TestManager {
 	protected ArrayList<AbstractExam> tests = new ArrayList<AbstractExam>();

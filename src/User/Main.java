@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Class.AbstractExam;
 import Class.Course;
 import Class.CourseList;
 import Class.TestManager;
@@ -21,17 +20,6 @@ public class Main {
 	
 	public static void main(String[] args) {
 		CourseList list = new CourseList();
-		/*
-		for(Course c: CourseList.allClass) {
-			System.out.println("ccc"+c.getName());
-			for(AbstractExam exam: c.getTestManager().tests) {
-				System.out.println(exam.name);
-				for(Integer score: exam.scores) {
-					System.out.println(score);
-				}
-			}
-		}
-		*/
 		String loginAccount;
 		String loginPassword;
 		System.out.println("Welcome to use the System");
@@ -40,8 +28,8 @@ public class Main {
 			loginAccount = scanner.nextLine();
 			System.out.print("Password:");
 			loginPassword = scanner.nextLine();	
-			readAccount();		// prepare the account list for login
-			System.out.println(Verify(loginAccount, loginPassword));	// get the permission of this account
+			readAccount();		
+			System.out.println(Verify(loginAccount, loginPassword));
 		}
 	}
 	
@@ -72,24 +60,15 @@ public class Main {
 					if(user.getPermission().equals("admin")) {
 						System.out.println("Your permission is admin");
 						login = new Admin(user);
-//						pass data to writeClassToFile, writeGradesFile
-//						writeClassToFile();
-//						writeGradesToFile();
 						
 					}
 					else if(user.getPermission().equals("scorer")) {
 						System.out.println("Your permission is scorer");
 						login = new Scorer(user);
-//						pass data to writeClassToFile, writeGradesFile
-//						writeClassToFile();
-//						writeGradesToFile();
 					}
 					else if (user.getPermission().equals("examinee")) {
 						System.out.println("Your permission is examinee");
 						login = new Examinee(user);
-//						pass data to writeClassToFile, writeGradesFile
-//						writeClassToFile();
-//						writeGradesToFile();
 					}
 					else {
 						return "Login Failed\n";
@@ -153,7 +132,6 @@ public class Main {
 	}
 	
 	private static void restoreClass() {
-//		pass data to write data to file
 		FileWriter fw;
 		ArrayList<Course> course = CourseList.getAllClass();
 		try {
@@ -234,7 +212,6 @@ public class Main {
 	}
 	
 	private static void restoreUser() {
-//		pass data to write data to file
 		FileWriter fw;
 		try {
 			fw = new FileWriter("src/DataBase/User.txt");

@@ -19,7 +19,6 @@ public class FengChiaUniversity extends TestManager {
 	
 	public FengChiaUniversity(Integer studentCount, ArrayList<String[]> data) {
 		super();
-		int cnt = data.size() - 1;
 		ArrayList<String> scoretest;
 		ArrayList<Integer> scoretest2;
 
