@@ -92,7 +92,6 @@ public class TOEIC extends TestManager {
 					sum += test.scores.get(i);
 				}
 			}
-			System.out.println("Total Grade: " + sum);
 		}
 	}
 
