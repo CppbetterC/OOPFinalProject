@@ -11,6 +11,39 @@ public class TOEIC extends TestManager {
 		this.tests.add(app.createTest("Total Grade", studentCount));
 	}
 
+	
+	public TOEIC(Integer studentCount, ArrayList<String[]> data) {
+		super();
+		ArrayList<String> scoretest;
+		ArrayList<Integer> scoretest2;
+	
+		for(int j = 0 ; j < data.get(0).length; j++) {
+			scoretest = new ArrayList<String>();
+			scoretest2 = new ArrayList<Integer>();
+			
+			if(j == 0) {
+				continue;
+			}
+			
+			for(int i = 0; i < data.size(); i++) {
+				scoretest.add(data.get(i)[j]);
+			}
+			if (j == 1 || j == 2) {
+				AbstractExamApp app = new ExamApp();
+				this.tests.add(app.createTest(scoretest.get(0), studentCount));
+			}
+			else {
+				AbstractExamApp app = new QuizApp();
+				this.tests.add(app.createTest(scoretest.get(0), studentCount));
+			}
+			scoretest.remove(0);
+			for(int k = 0; k < scoretest.size(); k++) {
+				scoretest2.add(Integer.parseInt((scoretest.get(k))));
+			}
+			this.tests.get(j-1).setGrade(scoretest2);
+		}
+	}
+	
 	@Override
 	public void addGrade(String name, Integer studentCount) {}
 
@@ -33,7 +66,7 @@ public class TOEIC extends TestManager {
 	}
 	
 	public boolean getGrade(ArrayList<Integer> students) {
-		int index = 1;
+		int index = 0;
 		for(AbstractExam app : tests) {
 			System.out.println(index++ + ":" + app.name);
 		}
