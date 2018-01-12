@@ -193,10 +193,11 @@ public class Main {
 		try {
 			for (int i = 0; i < course.size(); i++) {
 				TestManager test = CourseList.getAllClassGrade(i);
+				Integer courseId = CourseList.getAllClassId(i);
 				String courseName = CourseList.getAllClassName(i);
 				Integer courseTeacher = CourseList.getAllClassTeacher(i);
 				ArrayList<Integer> courseStudent = CourseList.getAllClassStudent(i);
-				fw = new FileWriter("src/DataBase/"+courseName+".txt");
+				fw = new FileWriter("src/DataBase/"+courseId+".txt");
 				BufferedWriter br = new BufferedWriter(fw);
 				br.write(courseTeacher + ";");
 				for (int j = 0; j < test.gettestlen(); j++) {
