@@ -39,7 +39,7 @@ public class Main {
 			System.out.print("Account:");
 			loginAccount = scanner.nextLine();
 			System.out.print("Password:");
-			loginPassword = scanner.nextLine();		
+			loginPassword = scanner.nextLine();	
 			readAccount();		// prepare the account list for login
 			System.out.println(Verify(loginAccount, loginPassword));	// get the permission of this account
 		}
@@ -47,6 +47,7 @@ public class Main {
 	
 	private static void readAccount() {
 		FileReader fr;
+		userList.clear();
 		try {
 			fr = new FileReader("src/DataBase/User.txt");
 			BufferedReader br = new BufferedReader(fr);
