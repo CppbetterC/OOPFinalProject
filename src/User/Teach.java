@@ -20,14 +20,14 @@ public class Teach {
 		
 		if(ischosen) {
 			while(true) {
-				System.out.println("1. Display tests\n2. Add Tests\n3. Delete Tests\n4. Rejister grades\n5. Set weight\n6. Back");
+				System.out.println("1. Display tests\n2. Add Tests\n3. Delete Tests\n4. Register grades\n5. Set weight\n6. Back");
 				switch(Integer.valueOf(scanner.nextLine())) {
 					case 1:
 						if(!CourseList.getGrade(courseNumber))
 							System.out.println("No test");
 						break;
 					case 2:
-						System.out.println("Class name: ");
+						System.out.println("Test name: ");
 						if(CourseList.addGrade(courseNumber, scanner.nextLine()))
 							System.out.println("Test add Successful");
 						else

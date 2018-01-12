@@ -27,12 +27,13 @@ public class FengChiaUniversity extends TestManager {
 		
 		for(int i = 0; i < tests.size(); i++) {
 			if(Exam.class.isInstance(tests.get(i)))	continue;
-			System.out.println(i+1 + ":" + tests.get(i).name);
+			System.out.println(i + ":" + tests.get(i).name);
 		}
 		System.out.println("Choice:");
-		Integer choice = Integer.valueOf(scanner.nextLine());
+		int choice = Integer.valueOf(scanner.nextLine());
 		if(choice < 0 || choice > tests.size())	return false;
 		if (Quiz.class.isInstance(tests.get(choice))) {
+			this.tests.remove(choice);
 			this.wieght.remove(choice);
 			return true;
 		}
