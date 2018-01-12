@@ -8,14 +8,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import User.MailServer;
 import User.Main;
 import User.User;
 
 public class CourseList {
 	private static boolean finalScoreChanged = false;
-	private static ArrayList<MailServer> observers = new ArrayList<MailServer>();
-	private static Vector obs = new Vector();
 	private static ArrayList<Course> allClass = new ArrayList<Course>();
 	
 	public CourseList() {
@@ -141,17 +138,6 @@ public class CourseList {
 			System.out.println(c);
 		}
 	}
-
-	public static void attachObserver(MailServer newObserver) {
-		observers.add(newObserver);
-	}
-
-//	Notify all observer, sent messages to them;
-	public static void notifyObserverGetFinalScore(String mailContext) {
-		for(MailServer obs : observers) {
-			obs.update(mailContext);
-		}
-	}
 	
 	public static boolean addGrade(Integer number, String name) {
 		for(Course c: allClass) {
@@ -175,7 +161,6 @@ public class CourseList {
 	public static boolean setGrade(Integer number) {
 		for(Course c: allClass) {
 			if(c.getNumber().equals(number)) {
-				notifyObserverGetFinalScore("You had got a mail!");
 				return c.setGrade();
 			}
 		}

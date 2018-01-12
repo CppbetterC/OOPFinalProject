@@ -52,18 +52,4 @@ public abstract class TestManager {
 	public Integer gettestlen() {
 		return tests.size();
 	}
-	
-//	public boolean setGrade(ArrayList<Integer> students, 
-//			ArrayList<String[]> dataOfTest) {
-//	
-//		for(int i = 0; i < dataOfTest.size(); i++) {
-//
-//			this.tests.get(0).setGrade(MinScore);
-//			this.tests.get(1).setGrade(FinScore);
-//
-//			return true;
-//		}
-//
-//		return false;
-//	}
 }

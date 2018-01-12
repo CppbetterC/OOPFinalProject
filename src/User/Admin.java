@@ -14,7 +14,7 @@ import Class.Course;
 import Class.CourseList;
 import User.User;
 
-public class Admin extends User implements MailServer {
+public class Admin extends User {
 	public Admin(User user) {
 		super(user);
 		System.out.println("Welcome back, " + getAccount() + "\n");
@@ -133,14 +133,5 @@ public class Admin extends User implements MailServer {
 			}
 		}
 	}
-	
-	@Override
-	public void update(Object message) {
-		if (!Objects.isNull(message)) {
-			String tmpMessage = message.toString();
-			System.out.println("You got a mail");
-			System.out.println("[" + tmpMessage + "]");
-//			call write method to write file to txt
-		}
-	}
+
 }
