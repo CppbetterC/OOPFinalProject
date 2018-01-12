@@ -19,45 +19,41 @@ public class FengChiaUniversity extends TestManager {
 	
 	public FengChiaUniversity(Integer studentCount, ArrayList<String[]> data) {
 		super();
-		AbstractExamApp app = new ExamApp();
 		int cnt = data.size() - 1;
 		ArrayList<String> scoretest;
 		ArrayList<Integer> scoretest2;
-		
-
-		for(int j = 0 ; j < data.get(j).length; j++) {
+	
+		for(int j = 0 ; j < data.get(0).length; j++) {
 			scoretest = new ArrayList<String>();
 			scoretest2 = new ArrayList<Integer>();
+			
 			if(j == 0) {
 				continue;
 			}
+			
 			for(int i = 0; i < data.size(); i++) {
 				scoretest.add(data.get(i)[j]);
 			}
-			
-			this.tests.add(app.createTest(scoretest.get(0), studentCount));
-			this.wieght.add(0.5);
+			if (j == 1 || j == 2) {
+				AbstractExamApp app = new ExamApp();
+				this.tests.add(app.createTest(scoretest.get(0), studentCount));
+				this.wieght.add(0.5);
+			}
+			else {
+				AbstractExamApp app = new QuizApp();
+				this.tests.add(app.createTest(scoretest.get(0), studentCount));
+				this.wieght.add(0.5);
+			}
 			scoretest.remove(0);
-
 			for(int k = 0; k < scoretest.size(); k++) {
 				scoretest2.add(Integer.parseInt((scoretest.get(k))));
 			}
-			
 			System.out.println(scoretest);
 			System.out.println(scoretest2);
 			System.out.println();
 			
-			this.tests.get(j).setGrade(scoretest2);
+			this.tests.get(j-1).setGrade(scoretest2);
 		}
-
-		
-//		this.tests.add(app.createTest("Mid-Term", studentCount));
-//		this.wieght.add(0.5);
-////		this.tests.get(0).setGrade(scores);
-//		
-//		this.tests.add(app.createTest("Final", studentCount));
-//		this.wieght.add(0.5);
-////		this.tests.get(0).setGrade(scores);
 	}
 	
 	public void addGrade(String name, Integer studentCount) {
