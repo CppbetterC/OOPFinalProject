@@ -58,10 +58,9 @@ public class User {
 	protected void function() {
 		while (true) {
 			System.out.println("Your Classes:");
-			for(Course c: course) {
+			for(Course c: course)
 				System.out.println(c);
-				System.out.println();
-			}
+			
 			System.out.println("\n\n*****************\n1. Change Password\n" + "2. Search Class\n" + "3. Logout\n*****************");
 			System.out.println("Choose a Service or Enter a class number directely: ");
 			Integer choice = Integer.valueOf(scanner.nextLine());
@@ -88,6 +87,7 @@ public class User {
 				}
 				default:
 					rollAction(choice);
+					this.course  = CourseList.getCourse(this.getId());
 					break;
 			}
 		}
